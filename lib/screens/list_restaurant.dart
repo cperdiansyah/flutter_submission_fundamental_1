@@ -24,7 +24,7 @@ class _ListRestaurantState extends State<ListRestaurant> {
                     Container(
                       height: 120,
                       padding: EdgeInsets.all(24),
-                      color: RestaurantAppColors.PRIMARY_COLOR,
+                      color: RestaurantAppColors.MCD_PRIMARY,
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -41,7 +41,7 @@ class _ListRestaurantState extends State<ListRestaurant> {
                             height: 8,
                           ),
                           Text(
-                            "Already hungry?",
+                            "Already feeling hungry?",
                             style: TextStyle(color: Colors.white),
                           ),
                         ],
