@@ -7,7 +7,7 @@ class RestaurantAppColors {
   static const Color DANGER_COLOR = Color(0xFFf44336);
 
   static const Color MCD_PRIMARY = Color(0xFFD62718);
-  static const Color MCD_SECONDARY = Color(0xFFFDC92B);
+  static const Color MCD_SECONDARY = Color(0xFFFFFCC00);
 
   static const Color TEXT_PRIMARY_COLOR = Color(0xFF707070);
   static const Color TEXT_SECONDARY_COLOR = Color(0xFF5C5C5C);

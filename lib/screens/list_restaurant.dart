@@ -5,6 +5,7 @@ import 'package:flutter_application_1/models/restaurant.dart';
 import 'package:flutter_application_1/resources/colors.dart';
 import 'package:flutter_application_1/routes/routes.dart';
 import 'package:flutter_application_1/screens/detail_restaurant.dart';
+import 'package:flutter_application_1/widgets/loading.dart';
 
 class ListRestaurant extends StatefulWidget {
   const ListRestaurant({super.key});
@@ -51,7 +52,7 @@ class _ListRestaurantState extends State<ListRestaurant> {
                     Container(
                       height: 120,
                       padding: EdgeInsets.all(24),
-                      color: RestaurantAppColors.MCD_PRIMARY,
+                      color: RestaurantAppColors.MCD_SECONDARY,
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -103,7 +104,7 @@ class _ListRestaurantState extends State<ListRestaurant> {
                                     ),
                                     Icon(
                                       Icons.search,
-                                      color: RestaurantAppColors.MCD_PRIMARY,
+                                      color: RestaurantAppColors.MCD_SECONDARY,
                                     )
                                   ],
                                 ),
@@ -123,7 +124,7 @@ class _ListRestaurantState extends State<ListRestaurant> {
                 future: DefaultAssetBundle.of(context)
                     .loadString('assets/local_restaurant.json'),
                 builder: (context, snapshot) {
-                  try {
+                  if (snapshot.hasData) {
                     final List<Restaurant> restaurant =
                         parseRestaurants(snapshot.data);
 
@@ -135,12 +136,16 @@ class _ListRestaurantState extends State<ListRestaurant> {
                           return _buildRestaurantItem(
                               context, restaurant[index]);
                         });
-                  } catch (err) {
+                  } else if (snapshot.hasError) {
                     return Padding(
                       padding: const EdgeInsets.only(top: 64.0),
                       child: Center(child: Text("Error Load Data")),
                     );
                   }
+                  return Padding(
+                    padding: const EdgeInsets.only(top: 64.0),
+                    child: Loading(),
+                  );
                 },
               ),
             ],
