@@ -94,36 +94,27 @@ class _ListRestaurantState extends State<ListRestaurant> {
                 future: DefaultAssetBundle.of(context)
                     .loadString('assets/local_restaurant.json'),
                 builder: (context, snapshot) {
-                  // try {
-                  //   final List<Restaurant> restaurant =
-                  //       parseRestaurants(snapshot.data);
+                 
+                  try {
+                    final List<Restaurant> restaurant =
+                        parseRestaurants(snapshot.data);
 
-                  //   return ListView.builder(
-                  //       itemCount: restaurant.length,
-                  //       shrinkWrap: true,
-                  //       physics: NeverScrollableScrollPhysics(),
-                  //       itemBuilder: (context, index) {
-                  //         return _buildRestaurantItem(
-                  //             context, restaurant[index]);
-                  //       });
-                  // } catch (err) {
-                  //   return Padding(
-                  //     padding: const EdgeInsets.only(top: 64.0),
-                  //     child: Center(child: Text("Error Load Data")),
-                  //   );
-                  // }
-                  final List<Restaurant> restaurant =
-                      parseRestaurants(snapshot.data);
-
-                  return ListView.builder(
-                      itemCount: restaurant.length,
-                      shrinkWrap: true,
-                      physics: NeverScrollableScrollPhysics(),
-                      itemBuilder: (context, index) {
-                        return _buildRestaurantItem(context, restaurant[index]);
-                      });
+                    return ListView.builder(
+                        itemCount: restaurant.length,
+                        shrinkWrap: true,
+                        physics: NeverScrollableScrollPhysics(),
+                        itemBuilder: (context, index) {
+                          return _buildRestaurantItem(
+                              context, restaurant[index]);
+                        });
+                  } catch (err) {
+                    return Padding(
+                      padding: const EdgeInsets.only(top: 64.0),
+                      child: Center(child: Text("Error Load Data")),
+                    );
+                  }
                 },
-              )
+              ),
             ],
           ),
         ),
@@ -132,7 +123,6 @@ class _ListRestaurantState extends State<ListRestaurant> {
   }
 
   Widget _buildRestaurantItem(BuildContext context, Restaurant restaurant) {
-    print(restaurant);
     return ListTile(
       contentPadding: const EdgeInsets.symmetric(
         horizontal: 16.0,
