@@ -6,6 +6,7 @@ import 'package:flutter_application_1/resources/colors.dart';
 import 'package:flutter_application_1/routes/routes.dart';
 import 'package:flutter_application_1/screens/detail_restaurant.dart';
 import 'package:flutter_application_1/widgets/loading.dart';
+import 'package:flutter_application_1/widgets/loading_lottie.dart';
 
 class ListRestaurant extends StatefulWidget {
   const ListRestaurant({super.key});
@@ -150,27 +151,27 @@ class _ListRestaurantState extends State<ListRestaurant> {
                 future: DefaultAssetBundle.of(context)
                     .loadString('assets/local_restaurant.json'),
                 builder: (context, snapshot) {
-                  if (snapshot.hasData) {
-                    final List<Restaurant> restaurant =
-                        parseRestaurants(snapshot.data);
+                  // if (snapshot.hasData) {
+                  //   final List<Restaurant> restaurant =
+                  //       parseRestaurants(snapshot.data);
 
-                    return ListView.builder(
-                        itemCount: restaurant.length,
-                        shrinkWrap: true,
-                        physics: NeverScrollableScrollPhysics(),
-                        itemBuilder: (context, index) {
-                          return _buildRestaurantItem(
-                              context, restaurant[index]);
-                        });
-                  } else if (snapshot.hasError) {
-                    return Padding(
-                      padding: const EdgeInsets.only(top: 64.0),
-                      child: Center(child: Text("Error Load Data")),
-                    );
-                  }
+                  //   return ListView.builder(
+                  //       itemCount: restaurant.length,
+                  //       shrinkWrap: true,
+                  //       physics: NeverScrollableScrollPhysics(),
+                  //       itemBuilder: (context, index) {
+                  //         return _buildRestaurantItem(
+                  //             context, restaurant[index]);
+                  //       });
+                  // } else if (snapshot.hasError) {
+                  //   return Padding(
+                  //     padding: const EdgeInsets.only(top: 64.0),
+                  //     child: Center(child: Text("Error Load Data")),
+                  //   );
+                  // }
                   return Padding(
-                    padding: const EdgeInsets.only(top: 64.0),
-                    child: Loading(),
+                    padding: const EdgeInsets.only(top: 24.0),
+                    child: LoadingView(),
                   );
                 },
               ),
