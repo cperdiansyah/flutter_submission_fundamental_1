@@ -30,6 +30,32 @@ class _ListRestaurantState extends State<ListRestaurant> {
         ),
       ),
       title: Text(restaurant.name),
+      subtitle: Column(
+        children: [
+          Row(
+            children: [
+              Icon(
+                Icons.location_on_outlined,
+                color: RestaurantAppColors.GREY_COLOR_1,
+                size: 21,
+              ),
+              Text(
+                restaurant.city,
+              )
+            ],
+          ),
+          Row(
+            children: [
+              Icon(
+                Icons.star,
+                color: RestaurantAppColors.GREY_COLOR_1,
+                size: 18,
+              ),
+              Text(restaurant.rating.toString())
+            ],
+          )
+        ],
+      ),
       onTap: () {
         Navigator.pushNamed(context, restaurantDetailRoute,
             arguments: restaurant);
