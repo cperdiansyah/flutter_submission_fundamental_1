@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/models/restaurant.dart';
 import 'package:flutter_application_1/resources/colors.dart';
@@ -94,7 +96,6 @@ class _ListRestaurantState extends State<ListRestaurant> {
                 future: DefaultAssetBundle.of(context)
                     .loadString('assets/local_restaurant.json'),
                 builder: (context, snapshot) {
-                 
                   try {
                     final List<Restaurant> restaurant =
                         parseRestaurants(snapshot.data);
@@ -102,7 +103,6 @@ class _ListRestaurantState extends State<ListRestaurant> {
                     return ListView.builder(
                         itemCount: restaurant.length,
                         shrinkWrap: true,
-                        physics: NeverScrollableScrollPhysics(),
                         itemBuilder: (context, index) {
                           return _buildRestaurantItem(
                               context, restaurant[index]);
