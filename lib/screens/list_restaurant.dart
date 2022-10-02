@@ -3,6 +3,8 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/models/restaurant.dart';
 import 'package:flutter_application_1/resources/colors.dart';
+import 'package:flutter_application_1/routes/routes.dart';
+import 'package:flutter_application_1/screens/detail_restaurant.dart';
 
 class ListRestaurant extends StatefulWidget {
   const ListRestaurant({super.key});
@@ -28,8 +30,8 @@ class _ListRestaurantState extends State<ListRestaurant> {
       ),
       title: Text(restaurant.name),
       onTap: () {
-        /* Navigator.pushNamed(context, ArticleDetailPage.routeName,
-            arguments: article);*/
+        Navigator.pushNamed(context, restaurantDetailRoute,
+            arguments: restaurant);
       },
     );
   }

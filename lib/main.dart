@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/routes/routes.dart';
 import 'package:flutter_application_1/screens/list_restaurant.dart';
+import 'package:flutter_application_1/screens/detail_restaurant.dart';
 
 void main() {
   runApp(const MyApp());
@@ -18,7 +19,10 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       initialRoute: restaurantListRoute,
-      routes: {restaurantListRoute: ((context) => const ListRestaurant())},
+      routes: {
+        restaurantListRoute: ((context) => ListRestaurant()),
+        restaurantDetailRoute: ((context) => DetailRestaurant()),
+      },
     );
   }
 }
