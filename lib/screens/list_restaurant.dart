@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/models/restaurant.dart';
 import 'package:flutter_application_1/resources/colors.dart';
 
 class ListRestaurant extends StatefulWidget {
@@ -76,7 +77,7 @@ class _ListRestaurantState extends State<ListRestaurant> {
                                     ),
                                     Icon(
                                       Icons.search,
-                                      color: RestaurantAppColors.PRIMARY_COLOR,
+                                      color: RestaurantAppColors.MCD_PRIMARY,
                                     )
                                   ],
                                 ),
@@ -88,11 +89,64 @@ class _ListRestaurantState extends State<ListRestaurant> {
                     )
                   ],
                 ),
+              ),
+              FutureBuilder<String>(
+                future: DefaultAssetBundle.of(context)
+                    .loadString('assets/local_restaurant.json'),
+                builder: (context, snapshot) {
+                  // try {
+                  //   final List<Restaurant> restaurant =
+                  //       parseRestaurants(snapshot.data);
+
+                  //   return ListView.builder(
+                  //       itemCount: restaurant.length,
+                  //       shrinkWrap: true,
+                  //       physics: NeverScrollableScrollPhysics(),
+                  //       itemBuilder: (context, index) {
+                  //         return _buildRestaurantItem(
+                  //             context, restaurant[index]);
+                  //       });
+                  // } catch (err) {
+                  //   return Padding(
+                  //     padding: const EdgeInsets.only(top: 64.0),
+                  //     child: Center(child: Text("Error Load Data")),
+                  //   );
+                  // }
+                  final List<Restaurant> restaurant =
+                      parseRestaurants(snapshot.data);
+
+                  return ListView.builder(
+                      itemCount: restaurant.length,
+                      shrinkWrap: true,
+                      physics: NeverScrollableScrollPhysics(),
+                      itemBuilder: (context, index) {
+                        return _buildRestaurantItem(context, restaurant[index]);
+                      });
+                },
               )
             ],
           ),
         ),
       ),
+    );
+  }
+
+  Widget _buildRestaurantItem(BuildContext context, Restaurant restaurant) {
+    print(restaurant);
+    return ListTile(
+      contentPadding: const EdgeInsets.symmetric(
+        horizontal: 16.0,
+        vertical: 8.0,
+      ),
+      leading: Image.network(
+        restaurant.pictureId,
+        width: 100,
+      ),
+      title: Text(restaurant.name),
+      onTap: () {
+        /* Navigator.pushNamed(context, ArticleDetailPage.routeName,
+            arguments: article);*/
+      },
     );
   }
 }
