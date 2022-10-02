@@ -12,6 +12,28 @@ class ListRestaurant extends StatefulWidget {
 }
 
 class _ListRestaurantState extends State<ListRestaurant> {
+  Widget _buildRestaurantItem(BuildContext context, Restaurant restaurant) {
+    return ListTile(
+      contentPadding: const EdgeInsets.symmetric(
+        horizontal: 16.0,
+        vertical: 8.0,
+      ),
+      leading: ClipRRect(
+        borderRadius: BorderRadius.circular(5.0),
+        child: Image.network(
+          restaurant.pictureId,
+          width: 100,
+          fit: BoxFit.cover,
+        ),
+      ),
+      title: Text(restaurant.name),
+      onTap: () {
+        /* Navigator.pushNamed(context, ArticleDetailPage.routeName,
+            arguments: article);*/
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -88,9 +110,12 @@ class _ListRestaurantState extends State<ListRestaurant> {
                           ),
                         ),
                       ),
-                    )
+                    ),
                   ],
                 ),
+              ),
+              SizedBox(
+                height: 10,
               ),
               FutureBuilder<String>(
                 future: DefaultAssetBundle.of(context)
@@ -103,6 +128,7 @@ class _ListRestaurantState extends State<ListRestaurant> {
                     return ListView.builder(
                         itemCount: restaurant.length,
                         shrinkWrap: true,
+                        physics: NeverScrollableScrollPhysics(),
                         itemBuilder: (context, index) {
                           return _buildRestaurantItem(
                               context, restaurant[index]);
@@ -119,24 +145,6 @@ class _ListRestaurantState extends State<ListRestaurant> {
           ),
         ),
       ),
-    );
-  }
-
-  Widget _buildRestaurantItem(BuildContext context, Restaurant restaurant) {
-    return ListTile(
-      contentPadding: const EdgeInsets.symmetric(
-        horizontal: 16.0,
-        vertical: 8.0,
-      ),
-      leading: Image.network(
-        restaurant.pictureId,
-        width: 100,
-      ),
-      title: Text(restaurant.name),
-      onTap: () {
-        /* Navigator.pushNamed(context, ArticleDetailPage.routeName,
-            arguments: article);*/
-      },
     );
   }
 }
