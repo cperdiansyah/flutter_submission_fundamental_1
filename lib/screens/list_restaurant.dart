@@ -125,10 +125,6 @@ class _ListRestaurantState extends State<ListRestaurant> {
                                       child: TextField(
                                         decoration: InputDecoration(
                                           labelText: 'Find Restaurant',
-                                          fillColor:
-                                              RestaurantAppColors.MCD_PRIMARY,
-                                          focusColor:
-                                              RestaurantAppColors.MCD_PRIMARY,
                                           prefixIcon: Icon(
                                             Icons.search,
                                             color:
