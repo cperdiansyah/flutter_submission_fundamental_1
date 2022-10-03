@@ -163,13 +163,12 @@ class DetailRestaurant extends StatelessWidget {
                       child: Row(children: [
                         Text("Foods : "),
                         Container(
-                            height: MediaQuery.of(context).size.height * 0.1,
-                            width: MediaQuery.of(context).size.width * 0.7,
+                            width: MediaQuery.of(context).size.width * 0.4,
                             child: Flexible(
+                              fit: FlexFit.tight,
                               child: ListView.builder(
                                 shrinkWrap: true,
                                 itemCount: restaurant.menus.foods.length,
-                                // scrollDirection: Axis.horizontal,
                                 itemBuilder: (context, index) {
                                   return Text(
                                       restaurant.menus.foods[index].name);
@@ -183,9 +182,9 @@ class DetailRestaurant extends StatelessWidget {
                       child: Row(children: [
                         Text("Drinks : "),
                         Container(
-                            height: MediaQuery.of(context).size.height * 0.3,
-                            width: MediaQuery.of(context).size.width * 0.7,
+                            width: MediaQuery.of(context).size.width * 0.4,
                             child: Flexible(
+                              fit: FlexFit.tight,
                               child: ListView.builder(
                                 shrinkWrap: true,
                                 itemCount: restaurant.menus.drinks.length,
