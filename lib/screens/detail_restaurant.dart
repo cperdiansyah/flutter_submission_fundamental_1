@@ -141,8 +141,65 @@ class DetailRestaurant extends StatelessWidget {
                           textAlign: TextAlign.justify,
                         ))
                   ],
-                )
+                ),
                 // Menus
+
+                Column(
+                  children: [
+                    Container(
+                      padding: EdgeInsets.all(24),
+                      child: Row(
+                        children: [
+                          Text(
+                            "Menus :",
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold, fontSize: 16),
+                          )
+                        ],
+                      ),
+                    ),
+                    Container(
+                      padding: EdgeInsets.all(24),
+                      child: Row(children: [
+                        Text("Foods : "),
+                        Container(
+                            height: MediaQuery.of(context).size.height * 0.1,
+                            width: MediaQuery.of(context).size.width * 0.7,
+                            child: Flexible(
+                              child: ListView.builder(
+                                shrinkWrap: true,
+                                itemCount: restaurant.menus.foods.length,
+                                // scrollDirection: Axis.horizontal,
+                                itemBuilder: (context, index) {
+                                  return Text(
+                                      restaurant.menus.foods[index].name);
+                                },
+                              ),
+                            ))
+                      ]),
+                    ),
+                    Container(
+                      padding: EdgeInsets.all(24),
+                      child: Row(children: [
+                        Text("Drinks : "),
+                        Container(
+                            height: MediaQuery.of(context).size.height * 0.3,
+                            width: MediaQuery.of(context).size.width * 0.7,
+                            child: Flexible(
+                              child: ListView.builder(
+                                shrinkWrap: true,
+                                itemCount: restaurant.menus.drinks.length,
+                                // scrollDirection: Axis.horizontal,
+                                itemBuilder: (context, index) {
+                                  return Text(
+                                      restaurant.menus.drinks[index].name);
+                                },
+                              ),
+                            ))
+                      ]),
+                    ),
+                  ],
+                )
               ],
             ),
           ),
