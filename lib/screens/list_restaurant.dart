@@ -4,8 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_1/models/restaurant.dart';
 import 'package:flutter_application_1/resources/colors.dart';
 import 'package:flutter_application_1/routes/routes.dart';
-import 'package:flutter_application_1/screens/detail_restaurant.dart';
-import 'package:flutter_application_1/widgets/loading.dart';
 import 'package:flutter_application_1/widgets/loading_lottie.dart';
 
 class ListRestaurant extends StatefulWidget {
@@ -123,16 +121,22 @@ class _ListRestaurantState extends State<ListRestaurant> {
                                   mainAxisAlignment:
                                       MainAxisAlignment.spaceBetween,
                                   children: [
-                                    Text(
-                                      "Find Restaurant",
-                                      style: TextStyle(
-                                          color:
-                                              RestaurantAppColors.GREY_COLOR_1),
+                                    Flexible(
+                                      child: TextField(
+                                        decoration: InputDecoration(
+                                          labelText: 'Find Restaurant',
+                                          fillColor:
+                                              RestaurantAppColors.MCD_PRIMARY,
+                                          focusColor:
+                                              RestaurantAppColors.MCD_PRIMARY,
+                                          prefixIcon: Icon(
+                                            Icons.search,
+                                            color:
+                                                RestaurantAppColors.MCD_PRIMARY,
+                                          ),
+                                        ),
+                                      ),
                                     ),
-                                    Icon(
-                                      Icons.search,
-                                      color: RestaurantAppColors.MCD_SECONDARY,
-                                    )
                                   ],
                                 ),
                               ),
@@ -151,24 +155,24 @@ class _ListRestaurantState extends State<ListRestaurant> {
                 future: DefaultAssetBundle.of(context)
                     .loadString('assets/local_restaurant.json'),
                 builder: (context, snapshot) {
-                  // if (snapshot.hasData) {
-                  //   final List<Restaurant> restaurant =
-                  //       parseRestaurants(snapshot.data);
+                  if (snapshot.hasData) {
+                    final List<Restaurant> restaurant =
+                        parseRestaurants(snapshot.data);
 
-                  //   return ListView.builder(
-                  //       itemCount: restaurant.length,
-                  //       shrinkWrap: true,
-                  //       physics: NeverScrollableScrollPhysics(),
-                  //       itemBuilder: (context, index) {
-                  //         return _buildRestaurantItem(
-                  //             context, restaurant[index]);
-                  //       });
-                  // } else if (snapshot.hasError) {
-                  //   return Padding(
-                  //     padding: const EdgeInsets.only(top: 64.0),
-                  //     child: Center(child: Text("Error Load Data")),
-                  //   );
-                  // }
+                    return ListView.builder(
+                        itemCount: restaurant.length,
+                        shrinkWrap: true,
+                        physics: NeverScrollableScrollPhysics(),
+                        itemBuilder: (context, index) {
+                          return _buildRestaurantItem(
+                              context, restaurant[index]);
+                        });
+                  } else if (snapshot.hasError) {
+                    return Padding(
+                      padding: const EdgeInsets.only(top: 64.0),
+                      child: Center(child: Text("Error Load Data")),
+                    );
+                  }
                   return Padding(
                     padding: const EdgeInsets.only(top: 24.0),
                     child: LoadingView(),
