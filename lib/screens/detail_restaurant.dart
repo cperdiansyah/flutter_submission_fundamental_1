@@ -162,39 +162,34 @@ class DetailRestaurant extends StatelessWidget {
                       padding: EdgeInsets.all(24),
                       child: Row(children: [
                         Text("Foods : "),
-                        Container(
-                            width: MediaQuery.of(context).size.width * 0.4,
-                            child: Flexible(
-                              fit: FlexFit.tight,
-                              child: ListView.builder(
-                                shrinkWrap: true,
-                                itemCount: restaurant.menus.foods.length,
-                                itemBuilder: (context, index) {
-                                  return Text(
-                                      restaurant.menus.foods[index].name);
-                                },
-                              ),
-                            ))
+                        Flexible(
+                            child: Container(
+                          child: ListView.builder(
+                            shrinkWrap: true,
+                            itemCount: restaurant.menus.foods.length,
+                            itemBuilder: (context, index) {
+                              return Text(restaurant.menus.foods[index].name);
+                            },
+                          ),
+                        ))
                       ]),
                     ),
                     Container(
                       padding: EdgeInsets.all(24),
                       child: Row(children: [
                         Text("Drinks : "),
-                        Container(
-                            width: MediaQuery.of(context).size.width * 0.4,
-                            child: Flexible(
-                              fit: FlexFit.tight,
-                              child: ListView.builder(
-                                shrinkWrap: true,
-                                itemCount: restaurant.menus.drinks.length,
-                                // scrollDirection: Axis.horizontal,
-                                itemBuilder: (context, index) {
-                                  return Text(
-                                      restaurant.menus.drinks[index].name);
-                                },
-                              ),
-                            ))
+                        Flexible(
+                          child: Container(
+                            child: ListView.builder(
+                              shrinkWrap: true,
+                              itemCount: restaurant.menus.drinks.length,
+                              itemBuilder: (context, index) {
+                                return Text(
+                                    restaurant.menus.drinks[index].name);
+                              },
+                            ),
+                          ),
+                        )
                       ]),
                     ),
                   ],

@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/models/restaurant.dart';
 import 'package:flutter_application_1/resources/colors.dart';
