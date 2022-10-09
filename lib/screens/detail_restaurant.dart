@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/data/models/restaurant.dart';
-import 'package:flutter_application_1/resources/colors.dart';
+import 'package:flutter_application_1/common/colors.dart';
 
 class DetailRestaurant extends StatelessWidget {
   final Restaurant restaurant;
@@ -21,8 +21,9 @@ class DetailRestaurant extends StatelessWidget {
                 Stack(
                   children: <Widget>[
                     Hero(
-                      tag: restaurant.name,
-                      child: Image.network(restaurant.pictureId,
+                      tag: restaurant.pictureId,
+                      child: Image.network(
+                          'https://restaurant-api.dicoding.dev/images/medium/${restaurant.pictureId}',
                           width: MediaQuery.of(context).size.width,
                           height: 250,
                           fit: BoxFit.cover),
@@ -160,37 +161,42 @@ class DetailRestaurant extends StatelessWidget {
                     ),
                     Container(
                       padding: EdgeInsets.all(24),
-                      child: Row(children: [
-                        Text("Foods : "),
-                        Flexible(
-                            child: Container(
-                          child: ListView.builder(
-                            shrinkWrap: true,
-                            itemCount: restaurant.menus.foods.length,
-                            itemBuilder: (context, index) {
-                              return Text(restaurant.menus.foods[index].name);
-                            },
-                          ),
-                        ))
-                      ]),
+                      child: Row(
+                        children: [
+                          Text("Foods : "),
+                          // Flexible(
+                          //   child: Container(
+                          //     child: ListView.builder(
+                          //       shrinkWrap: true,
+                          //       itemCount: restaurant.menus.foods.length,
+                          //       itemBuilder: (context, index) {
+                          //         return Text(restaurant.menus.foods[index].name);
+                          //       },
+                          //     ),
+                          //   ),
+                          // )
+                        ],
+                      ),
                     ),
                     Container(
                       padding: EdgeInsets.all(24),
-                      child: Row(children: [
-                        Text("Drinks : "),
-                        Flexible(
-                          child: Container(
-                            child: ListView.builder(
-                              shrinkWrap: true,
-                              itemCount: restaurant.menus.drinks.length,
-                              itemBuilder: (context, index) {
-                                return Text(
-                                    restaurant.menus.drinks[index].name);
-                              },
-                            ),
-                          ),
-                        )
-                      ]),
+                      child: Row(
+                        children: [
+                          Text("Drinks : "),
+                          // Flexible(
+                          //   child: Container(
+                          //     child: ListView.builder(
+                          //       shrinkWrap: true,
+                          //       itemCount: restaurant.menus.drinks.length,
+                          //       itemBuilder: (context, index) {
+                          //         return Text(
+                          //             restaurant.menus.drinks[index].name);
+                          //       },
+                          //     ),
+                          //   ),
+                          // )
+                        ],
+                      ),
                     ),
                   ],
                 )

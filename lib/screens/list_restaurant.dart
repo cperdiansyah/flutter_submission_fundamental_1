@@ -1,10 +1,11 @@
-import 'dart:convert';
-
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/common/colors.dart';
+import 'package:flutter_application_1/data/api/api_service.dart';
 import 'package:flutter_application_1/data/models/restaurant.dart';
-import 'package:flutter_application_1/resources/colors.dart';
-import 'package:flutter_application_1/routes/routes.dart';
+import 'package:flutter_application_1/screens/card_restaurant.dart';
 import 'package:flutter_application_1/widgets/loading_lottie.dart';
+import 'package:flutter_application_1/widgets/platform_widget.dart';
 
 class ListRestaurant extends StatefulWidget {
   const ListRestaurant({super.key});
@@ -14,75 +15,33 @@ class ListRestaurant extends StatefulWidget {
 }
 
 class _ListRestaurantState extends State<ListRestaurant> {
-  late Future<Restaurant> _restaurant;
-  Widget _buildRestaurantItem(BuildContext context, Restaurant restaurant) {
-    return ListTile(
-      contentPadding: const EdgeInsets.symmetric(
-        horizontal: 16.0,
-        vertical: 8.0,
-      ),
-      leading: ClipRRect(
-        borderRadius: BorderRadius.circular(5.0),
-        child: Image.network(
-          restaurant.pictureId,
-          width: 100,
-          fit: BoxFit.cover,
-        ),
-      ),
-      title: Text(restaurant.name),
-      subtitle: Column(
-        children: [
-          Row(
-            children: [
-              Icon(
-                Icons.location_on_outlined,
-                color: RestaurantAppColors.GREY_COLOR_1,
-                size: 21,
-              ),
-              Text(
-                restaurant.city,
-              )
-            ],
-          ),
-          Row(
-            children: [
-              Icon(
-                Icons.star,
-                color: RestaurantAppColors.GREY_COLOR_1,
-                size: 18,
-              ),
-              Text(restaurant.rating.toString())
-            ],
-          )
-        ],
-      ),
-      onTap: () {
-        Navigator.pushNamed(context, restaurantDetailRoute,
-            arguments: restaurant);
-      },
-    );
-  }
+  late Future<Restaurants> _restaurant;
 
   @override
-  Widget build(BuildContext context) {
+  void initState() {
+    super.initState();
+    _restaurant = ApiService().getListRestaurants();
+  }
+
+  Widget _buildList(BuildContext context) {
     return Scaffold(
       body: SafeArea(
         child: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              Container(
+              SizedBox(
                 height: 150,
                 child: Stack(
                   children: [
                     Container(
                       height: 120,
-                      padding: EdgeInsets.all(24),
+                      padding: const EdgeInsets.all(24),
                       color: RestaurantAppColors.MCD_SECONDARY,
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         crossAxisAlignment: CrossAxisAlignment.stretch,
-                        children: [
+                        children: const [
                           Text(
                             'Hola...',
                             style: TextStyle(
@@ -121,7 +80,7 @@ class _ListRestaurantState extends State<ListRestaurant> {
                                 child: Row(
                                   mainAxisAlignment:
                                       MainAxisAlignment.spaceBetween,
-                                  children: [
+                                  children: const [
                                     Flexible(
                                       child: TextField(
                                         decoration: InputDecoration(
@@ -145,37 +104,38 @@ class _ListRestaurantState extends State<ListRestaurant> {
                   ],
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 10,
               ),
-              FutureBuilder<String>(
-                future: DefaultAssetBundle.of(context)
-                    .loadString('assets/local_restaurant.json'),
-                builder: (context, snapshot) {
-                  if (snapshot.hasData) {
-                    final restaurants =
-                        Restaurants.fromJson(jsonDecode(snapshot.data!));
-
-                    return ListView.builder(
-                        itemCount: restaurants.restaurant.length,
+              FutureBuilder(
+                future: _restaurant,
+                builder: (context, AsyncSnapshot<Restaurants> snapshot) {
+                  var state = snapshot.connectionState;
+                  if (state != ConnectionState.done) {
+                    return const Center(child: LoadingView());
+                  } else {
+                    if (snapshot.hasData) {
+                      return ListView.builder(
                         shrinkWrap: true,
-                        physics: NeverScrollableScrollPhysics(),
+                        physics: const NeverScrollableScrollPhysics(),
+                        itemCount: snapshot.data?.restaurant.length,
                         itemBuilder: (context, index) {
-                          return _buildRestaurantItem(
-                              context, restaurants.restaurant[index]);
-                        });
-                  } else if (snapshot.hasError) {
-                    return Padding(
-                      padding: const EdgeInsets.only(top: 64.0),
-                      child: Center(child: Text("Error Load Data")),
-                    );
+                          var restaurant = snapshot.data?.restaurant[index];
+                          return CardRestaurant(restaurant: restaurant!);
+                        },
+                      );
+                    } else if (snapshot.hasError) {
+                      return Center(
+                        child: Material(
+                          child: Text(snapshot.error.toString()),
+                        ),
+                      );
+                    } else {
+                      return const Material(child: Text(''));
+                    }
                   }
-                  return Padding(
-                    padding: const EdgeInsets.only(top: 24.0),
-                    child: LoadingView(),
-                  );
                 },
-              ),
+              )
             ],
           ),
         ),
@@ -183,5 +143,26 @@ class _ListRestaurantState extends State<ListRestaurant> {
     );
   }
 
-  
+  Widget _buildAndroid(BuildContext context) {
+    return Scaffold(
+      body: _buildList(context),
+    );
+  }
+
+  Widget _buildIos(BuildContext context) {
+    return CupertinoPageScaffold(
+      // navigationBar: const CupertinoNavigationBar(
+      //   transitionBetweenRoutes: false,
+      // ),
+      child: _buildList(context),
+    );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return PlatformWidget(
+      androidBuilder: _buildAndroid,
+      iosBuilder: _buildIos,
+    );
+  }
 }

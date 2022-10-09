@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_application_1/data/models/restaurant.dart';
-import 'package:flutter_application_1/resources/colors.dart';
+import 'package:flutter_application_1/common/colors.dart';
+import 'package:flutter_application_1/routes/routes.dart';
 
 class CardRestaurant extends StatelessWidget {
   const CardRestaurant({super.key, required this.restaurant});
@@ -11,7 +10,6 @@ class CardRestaurant extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Material(
-      color: RestaurantAppColors.ACCENT_COLOR,
       child: ListTile(
         contentPadding: const EdgeInsets.symmetric(
           horizontal: 16.0,
@@ -20,7 +18,7 @@ class CardRestaurant extends StatelessWidget {
         leading: ClipRRect(
           borderRadius: BorderRadius.circular(5.0),
           child: Image.network(
-            restaurant.pictureId,
+            'https://restaurant-api.dicoding.dev/images/small/${restaurant.pictureId}',
             width: 100,
             fit: BoxFit.cover,
           ),
@@ -52,7 +50,10 @@ class CardRestaurant extends StatelessWidget {
             )
           ],
         ),
-        onTap: () {},
+        onTap: () {
+          Navigator.pushNamed(context, restaurantDetailRoute,
+              arguments: restaurant);
+        },
       ),
     );
   }
