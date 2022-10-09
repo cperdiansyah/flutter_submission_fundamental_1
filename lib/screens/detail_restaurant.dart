@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/data/models/restaurant.dart';
 import 'package:flutter_application_1/common/colors.dart';
+import 'package:readmore/readmore.dart';
 
 class DetailRestaurant extends StatelessWidget {
   final Restaurant restaurant;
@@ -116,10 +117,10 @@ class DetailRestaurant extends StatelessWidget {
                 Column(
                   children: [
                     Container(
-                      padding: EdgeInsets.all(24),
+                      padding: const EdgeInsets.all(24),
                       child: Row(
                         children: [
-                          Icon(
+                          const Icon(
                             Icons.location_on,
                             color: RestaurantAppColors.GREY_COLOR_1,
                             size: 31,
@@ -133,14 +134,25 @@ class DetailRestaurant extends StatelessWidget {
                       ),
                     ),
                     Container(
-                        alignment: Alignment.center,
-                        padding: const EdgeInsets.only(left: 18.0, right: 18.0),
-                        child: Text(
-                          restaurant.description,
-                          maxLines: 4,
-                          overflow: TextOverflow.ellipsis,
-                          textAlign: TextAlign.justify,
-                        ))
+                      alignment: Alignment.center,
+                      padding: const EdgeInsets.only(left: 18.0, right: 18.0),
+                      child: ReadMoreText(
+                        restaurant.description,
+                        trimLines: 5,
+                        colorClickableText: RestaurantAppColors.MCD_PRIMARY,
+                        trimMode: TrimMode.Length,
+                        trimCollapsedText: 'Show More',
+                        trimExpandedText: 'Show less',
+                        moreStyle: const TextStyle(
+                            fontSize: 12,
+                            fontWeight: FontWeight.w400,
+                            color: RestaurantAppColors.MCD_PRIMARY),
+                        lessStyle: const TextStyle(
+                            fontSize: 12,
+                            fontWeight: FontWeight.w400,
+                            color: RestaurantAppColors.MCD_PRIMARY),
+                      ),
+                    ),
                   ],
                 ),
                 // Menus
