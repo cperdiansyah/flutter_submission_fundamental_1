@@ -1,7 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/models/restaurant.dart';
+import 'package:flutter_application_1/data/models/restaurant.dart';
 import 'package:flutter_application_1/resources/colors.dart';
 import 'package:flutter_application_1/routes/routes.dart';
 import 'package:flutter_application_1/widgets/loading_lottie.dart';
@@ -14,6 +14,7 @@ class ListRestaurant extends StatefulWidget {
 }
 
 class _ListRestaurantState extends State<ListRestaurant> {
+  late Future<Restaurant> _restaurant;
   Widget _buildRestaurantItem(BuildContext context, Restaurant restaurant) {
     return ListTile(
       contentPadding: const EdgeInsets.symmetric(
@@ -181,4 +182,6 @@ class _ListRestaurantState extends State<ListRestaurant> {
       ),
     );
   }
+
+  
 }

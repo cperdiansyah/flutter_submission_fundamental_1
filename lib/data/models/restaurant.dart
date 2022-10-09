@@ -1,5 +1,5 @@
 // ignore_for_file: invalid_annotation_target
-import 'package:flutter_application_1/models/menu.dart';
+import 'package:flutter_application_1/data/models/menu.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'restaurant.freezed.dart';

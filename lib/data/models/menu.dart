@@ -2,7 +2,7 @@
 
 import 'dart:convert';
 
-import 'package:flutter_application_1/models/drink.dart';
+import 'package:flutter_application_1/data/models/drink.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 part 'menu.freezed.dart';
 part 'menu.g.dart';
