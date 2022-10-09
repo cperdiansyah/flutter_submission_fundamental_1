@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/models/restaurant.dart';
 import 'package:flutter_application_1/resources/colors.dart';
@@ -150,16 +152,16 @@ class _ListRestaurantState extends State<ListRestaurant> {
                     .loadString('assets/local_restaurant.json'),
                 builder: (context, snapshot) {
                   if (snapshot.hasData) {
-                    final List<Restaurant> restaurant =
-                        parseRestaurants(snapshot.data);
+                    final restaurants =
+                        Restaurants.fromJson(jsonDecode(snapshot.data!));
 
                     return ListView.builder(
-                        itemCount: restaurant.length,
+                        itemCount: restaurants.restaurant.length,
                         shrinkWrap: true,
                         physics: NeverScrollableScrollPhysics(),
                         itemBuilder: (context, index) {
                           return _buildRestaurantItem(
-                              context, restaurant[index]);
+                              context, restaurants.restaurant[index]);
                         });
                   } else if (snapshot.hasError) {
                     return Padding(
