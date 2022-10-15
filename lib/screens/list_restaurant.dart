@@ -111,6 +111,7 @@ class _ListRestaurantState extends State<ListRestaurant> {
                 future: _restaurant,
                 builder: (context, AsyncSnapshot<Restaurants> snapshot) {
                   var state = snapshot.connectionState;
+                  
                   if (state != ConnectionState.done) {
                     return const Center(child: LoadingView());
                   } else {
