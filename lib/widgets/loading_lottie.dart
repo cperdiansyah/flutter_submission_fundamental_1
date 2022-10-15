@@ -16,7 +16,7 @@ class LoadingView extends StatelessWidget {
           height: MediaQuery.of(context).size.height * 0.1,
         ),
         Container(
-          child: Lottie.asset('assets/lottie/loading_lottie.json'),
+          child: Lottie.asset('assets/lottie/loading_lottie_2.json'),
         ),
       ],
     );
