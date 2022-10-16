@@ -1,7 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/common/colors.dart';
-import 'package:flutter_application_1/provider/restaurant_list_provider.dart';
+import 'package:flutter_application_1/data/models/restaurant.dart';
+import 'package:flutter_application_1/provider/provider.dart';
 import 'package:flutter_application_1/ui/widgets/card_restaurant.dart';
 import 'package:flutter_application_1/ui/widgets/platform_widget.dart';
 import 'package:provider/provider.dart';
@@ -100,11 +101,12 @@ class ListRestaurant extends StatelessWidget {
                   } else if (state.state == ResultState.hasData) {
                     return ListView.builder(
                       shrinkWrap: true,
-                      itemCount: state.result.restaurant.length,
+                      itemCount: state.result.restaurants!.length,
                       physics: const NeverScrollableScrollPhysics(),
                       itemBuilder: (context, index) {
-                        var article = state.result.restaurant[index];
-                        return CardRestaurant(restaurant: article);
+                        var article = state.result.restaurants![index];
+                        return CardRestaurant(
+                            restaurant: article as Restaurant);
                       },
                     );
                   } else if (state.state == ResultState.noData) {

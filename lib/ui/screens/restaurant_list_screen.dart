@@ -19,9 +19,9 @@ class RestaurantListScreen extends StatelessWidget {
               } else if (state.state == ResultState.hasData) {
                 return ListView.builder(
                   shrinkWrap: true,
-                  itemCount: state.result.restaurant.length,
+                  itemCount: state.result.restaurants!.length,
                   itemBuilder: (context, index) {
-                    var restaurant = state.result.restaurant[index];
+                    var restaurant = state.result.restaurants![index];
                     return CardRestaurant(restaurant: restaurant);
                   },
                 );
