@@ -12,6 +12,7 @@ class DetailRestaurant extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    print(restaurant);
     return Material(
       child: Scaffold(
         body: SafeArea(
@@ -24,10 +25,14 @@ class DetailRestaurant extends StatelessWidget {
                     Hero(
                       tag: restaurant.pictureId,
                       child: Image.network(
-                          'https://restaurant-api.dicoding.dev/images/medium/${restaurant.pictureId}',
-                          width: MediaQuery.of(context).size.width,
-                          height: 250,
-                          fit: BoxFit.cover),
+                        'https://restaurant-api.dicoding.dev/images/medium/${restaurant.pictureId}',
+                        width: MediaQuery.of(context).size.width,
+                        height: 250,
+                        fit: BoxFit.cover,
+                        errorBuilder: (context, error, stackTrace) {
+                          return Text('Your error widget...');
+                        },
+                      ),
                     ),
                     Container(
                       padding: const EdgeInsets.all(5.0),

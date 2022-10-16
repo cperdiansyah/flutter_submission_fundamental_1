@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/data/models/restaurant.dart';
 import 'package:flutter_application_1/routes/routes.dart';
+import 'package:flutter_application_1/screens/home_page.dart';
 import 'package:flutter_application_1/screens/list_restaurant.dart';
 import 'package:flutter_application_1/screens/detail_restaurant.dart';
 
@@ -9,7 +10,7 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  const MyApp({Key? key}) : super(key: key);
 
   // This widget is the root of your application.
   @override
@@ -19,9 +20,10 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.red,
       ),
-      initialRoute: restaurantListRoute,
+      initialRoute: homepage,
       routes: {
-        restaurantListRoute: ((context) => const ListRestaurant()),
+        homepage: (context) => const Homepage(),
+        // restaurantListRoute: ((context) => const ListRestaurant()),
         restaurantDetailRoute: ((context) => DetailRestaurant(
               restaurant:
                   ModalRoute.of(context)?.settings.arguments as Restaurant,

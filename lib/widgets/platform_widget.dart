@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/widgets.dart';
-
 class PlatformWidget extends StatelessWidget {
   final WidgetBuilder androidBuilder;
   final WidgetBuilder iosBuilder;
@@ -14,7 +13,6 @@ class PlatformWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     switch (defaultTargetPlatform) {
       case TargetPlatform.android:
-        // return iosBuilder(context);
         return androidBuilder(context);
       case TargetPlatform.iOS:
         return iosBuilder(context);

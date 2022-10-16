@@ -26,6 +26,9 @@ _$_Restaurant _$$_RestaurantFromJson(Map<String, dynamic> json) =>
       pictureId: json['pictureId'] as String,
       city: json['city'] as String,
       rating: (json['rating'] as num).toDouble(),
+      menus: json['menus'] == null
+          ? null
+          : Menu.fromJson(json['menus'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$$_RestaurantToJson(_$_Restaurant instance) =>
@@ -36,4 +39,5 @@ Map<String, dynamic> _$$_RestaurantToJson(_$_Restaurant instance) =>
       'pictureId': instance.pictureId,
       'city': instance.city,
       'rating': instance.rating,
+      'menus': instance.menus,
     };

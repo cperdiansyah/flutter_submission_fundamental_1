@@ -17,16 +17,14 @@ class Restaurants with _$Restaurants {
 
 @freezed
 class Restaurant with _$Restaurant {
-  const factory Restaurant({
-    required String id,
-    required String name,
-    required String description,
-    required String pictureId,
-    required String city,
-    required double rating,
-    
-    // @JsonKey(name: 'menus') required Menu menus
-  }) = _Restaurant;
+  const factory Restaurant(
+      {required String id,
+      required String name,
+      required String description,
+      required String pictureId,
+      required String city,
+      required double rating,
+      @JsonKey(name: 'menus') Menu? menus}) = _Restaurant;
 
   factory Restaurant.fromJson(Map<String, dynamic> json) =>
       _$RestaurantFromJson(json);

@@ -10,7 +10,6 @@ class ApiService {
   static const String _baseUrl = 'https://restaurant-api.dicoding.dev';
 
   Future<Restaurants> getListRestaurants() async {
-    
     try {
       final response =
           await http.get(Uri.parse("${_baseUrl}${Endpoints.restaurantList}"));
@@ -25,7 +24,7 @@ class ApiService {
       throw Exception('Send timeout in connection with API server');
     } on Error catch (e) {
       print('Error: $e');
-      throw Exception('Failed to load top headlines');
+      throw Exception('Something went wrong ');
     }
   }
 }

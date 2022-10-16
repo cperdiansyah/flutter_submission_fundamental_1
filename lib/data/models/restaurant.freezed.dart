@@ -171,6 +171,8 @@ mixin _$Restaurant {
   String get pictureId => throw _privateConstructorUsedError;
   String get city => throw _privateConstructorUsedError;
   double get rating => throw _privateConstructorUsedError;
+  @JsonKey(name: 'menus')
+  Menu? get menus => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -189,7 +191,10 @@ abstract class $RestaurantCopyWith<$Res> {
       String description,
       String pictureId,
       String city,
-      double rating});
+      double rating,
+      @JsonKey(name: 'menus') Menu? menus});
+
+  $MenuCopyWith<$Res>? get menus;
 }
 
 /// @nodoc
@@ -208,6 +213,7 @@ class _$RestaurantCopyWithImpl<$Res> implements $RestaurantCopyWith<$Res> {
     Object? pictureId = freezed,
     Object? city = freezed,
     Object? rating = freezed,
+    Object? menus = freezed,
   }) {
     return _then(_value.copyWith(
       id: id == freezed
@@ -234,7 +240,22 @@ class _$RestaurantCopyWithImpl<$Res> implements $RestaurantCopyWith<$Res> {
           ? _value.rating
           : rating // ignore: cast_nullable_to_non_nullable
               as double,
+      menus: menus == freezed
+          ? _value.menus
+          : menus // ignore: cast_nullable_to_non_nullable
+              as Menu?,
     ));
+  }
+
+  @override
+  $MenuCopyWith<$Res>? get menus {
+    if (_value.menus == null) {
+      return null;
+    }
+
+    return $MenuCopyWith<$Res>(_value.menus!, (value) {
+      return _then(_value.copyWith(menus: value));
+    });
   }
 }
 
@@ -251,7 +272,11 @@ abstract class _$$_RestaurantCopyWith<$Res>
       String description,
       String pictureId,
       String city,
-      double rating});
+      double rating,
+      @JsonKey(name: 'menus') Menu? menus});
+
+  @override
+  $MenuCopyWith<$Res>? get menus;
 }
 
 /// @nodoc
@@ -272,6 +297,7 @@ class __$$_RestaurantCopyWithImpl<$Res> extends _$RestaurantCopyWithImpl<$Res>
     Object? pictureId = freezed,
     Object? city = freezed,
     Object? rating = freezed,
+    Object? menus = freezed,
   }) {
     return _then(_$_Restaurant(
       id: id == freezed
@@ -298,6 +324,10 @@ class __$$_RestaurantCopyWithImpl<$Res> extends _$RestaurantCopyWithImpl<$Res>
           ? _value.rating
           : rating // ignore: cast_nullable_to_non_nullable
               as double,
+      menus: menus == freezed
+          ? _value.menus
+          : menus // ignore: cast_nullable_to_non_nullable
+              as Menu?,
     ));
   }
 }
@@ -311,7 +341,8 @@ class _$_Restaurant implements _Restaurant {
       required this.description,
       required this.pictureId,
       required this.city,
-      required this.rating});
+      required this.rating,
+      @JsonKey(name: 'menus') this.menus});
 
   factory _$_Restaurant.fromJson(Map<String, dynamic> json) =>
       _$$_RestaurantFromJson(json);
@@ -328,10 +359,13 @@ class _$_Restaurant implements _Restaurant {
   final String city;
   @override
   final double rating;
+  @override
+  @JsonKey(name: 'menus')
+  final Menu? menus;
 
   @override
   String toString() {
-    return 'Restaurant(id: $id, name: $name, description: $description, pictureId: $pictureId, city: $city, rating: $rating)';
+    return 'Restaurant(id: $id, name: $name, description: $description, pictureId: $pictureId, city: $city, rating: $rating, menus: $menus)';
   }
 
   @override
@@ -345,7 +379,8 @@ class _$_Restaurant implements _Restaurant {
                 .equals(other.description, description) &&
             const DeepCollectionEquality().equals(other.pictureId, pictureId) &&
             const DeepCollectionEquality().equals(other.city, city) &&
-            const DeepCollectionEquality().equals(other.rating, rating));
+            const DeepCollectionEquality().equals(other.rating, rating) &&
+            const DeepCollectionEquality().equals(other.menus, menus));
   }
 
   @JsonKey(ignore: true)
@@ -357,7 +392,8 @@ class _$_Restaurant implements _Restaurant {
       const DeepCollectionEquality().hash(description),
       const DeepCollectionEquality().hash(pictureId),
       const DeepCollectionEquality().hash(city),
-      const DeepCollectionEquality().hash(rating));
+      const DeepCollectionEquality().hash(rating),
+      const DeepCollectionEquality().hash(menus));
 
   @JsonKey(ignore: true)
   @override
@@ -379,7 +415,8 @@ abstract class _Restaurant implements Restaurant {
       required final String description,
       required final String pictureId,
       required final String city,
-      required final double rating}) = _$_Restaurant;
+      required final double rating,
+      @JsonKey(name: 'menus') final Menu? menus}) = _$_Restaurant;
 
   factory _Restaurant.fromJson(Map<String, dynamic> json) =
       _$_Restaurant.fromJson;
@@ -396,6 +433,9 @@ abstract class _Restaurant implements Restaurant {
   String get city;
   @override
   double get rating;
+  @override
+  @JsonKey(name: 'menus')
+  Menu? get menus;
   @override
   @JsonKey(ignore: true)
   _$$_RestaurantCopyWith<_$_Restaurant> get copyWith =>

@@ -1,29 +1,15 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/common/colors.dart';
-import 'package:flutter_application_1/data/api/api_service.dart';
-import 'package:flutter_application_1/data/models/restaurant.dart';
+import 'package:flutter_application_1/provider/restaurant_provider.dart';
 import 'package:flutter_application_1/screens/card_restaurant.dart';
-import 'package:flutter_application_1/widgets/loading_lottie.dart';
 import 'package:flutter_application_1/widgets/platform_widget.dart';
+import 'package:provider/provider.dart';
 
-class ListRestaurant extends StatefulWidget {
-  const ListRestaurant({super.key});
+class ListRestaurant extends StatelessWidget {
+  const ListRestaurant({Key? key}) : super(key: key);
 
-  @override
-  State<ListRestaurant> createState() => _ListRestaurantState();
-}
-
-class _ListRestaurantState extends State<ListRestaurant> {
-  late Future<Restaurants> _restaurant;
-
-  @override
-  void initState() {
-    super.initState();
-    _restaurant = ApiService().getListRestaurants();
-  }
-
-  Widget _buildList(BuildContext context) {
+  Widget _buildList() {
     return Scaffold(
       body: SafeArea(
         child: SingleChildScrollView(
@@ -107,36 +93,72 @@ class _ListRestaurantState extends State<ListRestaurant> {
               const SizedBox(
                 height: 10,
               ),
-              FutureBuilder(
-                future: _restaurant,
-                builder: (context, AsyncSnapshot<Restaurants> snapshot) {
-                  var state = snapshot.connectionState;
-
-                  if (state != ConnectionState.done) {
-                    return const Center(child: LoadingView());
+              Consumer<RestaurantProvider>(
+                builder: (context, state, _) {
+                  if (state.state == ResultState.loading) {
+                    return const Center(child: CircularProgressIndicator());
+                  } else if (state.state == ResultState.hasData) {
+                    return ListView.builder(
+                      shrinkWrap: true,
+                      itemCount: state.result.restaurant.length,
+                      physics: const NeverScrollableScrollPhysics(),
+                      itemBuilder: (context, index) {
+                        var article = state.result.restaurant[index];
+                        return CardRestaurant(restaurant: article);
+                      },
+                    );
+                  } else if (state.state == ResultState.noData) {
+                    return Center(
+                      child: Material(
+                        child: Text(state.message),
+                      ),
+                    );
+                  } else if (state.state == ResultState.error) {
+                    return Center(
+                      child: Material(
+                        child: Text(state.message),
+                      ),
+                    );
                   } else {
-                    if (snapshot.hasData) {
-                      return ListView.builder(
-                        shrinkWrap: true,
-                        physics: const NeverScrollableScrollPhysics(),
-                        itemCount: snapshot.data?.restaurant.length,
-                        itemBuilder: (context, index) {
-                          var restaurant = snapshot.data?.restaurant[index];
-                          return CardRestaurant(restaurant: restaurant!);
-                        },
-                      );
-                    } else if (snapshot.hasError) {
-                      return Center(
-                        child: Material(
-                          child: Text(snapshot.error.toString()),
-                        ),
-                      );
-                    } else {
-                      return const Material(child: Text(''));
-                    }
+                    return const Center(
+                      child: Material(
+                        child: Text(''),
+                      ),
+                    );
                   }
                 },
               )
+
+              // FutureBuilder(
+              //   future: _restaurant,
+              //   builder: (context, AsyncSnapshot<Restaurants> snapshot) {
+              //     var state = snapshot.connectionState;
+
+              //     if (state != ConnectionState.done) {
+              //       return const Center(child: LoadingView());
+              //     } else {
+              //       if (snapshot.hasData) {
+              //         return ListView.builder(
+              //           shrinkWrap: true,
+              //           physics: const NeverScrollableScrollPhysics(),
+              //           itemCount: snapshot.data?.restaurant.length,
+              //           itemBuilder: (context, index) {
+              //             var restaurant = snapshot.data?.restaurant[index];
+              //             return CardRestaurant(restaurant: restaurant!);
+              //           },
+              //         );
+              //       } else if (snapshot.hasError) {
+              //         return Center(
+              //           child: Material(
+              //             child: Text(snapshot.error.toString()),
+              //           ),
+              //         );
+              //       } else {
+              //         return const Material(child: Text(''));
+              //       }
+              //     }
+              //   },
+              // )
             ],
           ),
         ),
@@ -146,16 +168,16 @@ class _ListRestaurantState extends State<ListRestaurant> {
 
   Widget _buildAndroid(BuildContext context) {
     return Scaffold(
-      body: _buildList(context),
+      body: _buildList(),
     );
   }
 
   Widget _buildIos(BuildContext context) {
     return CupertinoPageScaffold(
-      // navigationBar: const CupertinoNavigationBar(
-      //   transitionBetweenRoutes: false,
-      // ),
-      child: _buildList(context),
+      navigationBar: const CupertinoNavigationBar(
+        transitionBetweenRoutes: false,
+      ),
+      child: _buildList(),
     );
   }
 
