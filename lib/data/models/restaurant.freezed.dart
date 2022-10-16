@@ -173,6 +173,8 @@ mixin _$Restaurant {
   double get rating => throw _privateConstructorUsedError;
   @JsonKey(name: 'menus')
   Menu? get menus => throw _privateConstructorUsedError;
+  @JsonKey(name: 'customerReviews')
+  CostumerReviews? get reviews => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -192,9 +194,11 @@ abstract class $RestaurantCopyWith<$Res> {
       String pictureId,
       String city,
       double rating,
-      @JsonKey(name: 'menus') Menu? menus});
+      @JsonKey(name: 'menus') Menu? menus,
+      @JsonKey(name: 'customerReviews') CostumerReviews? reviews});
 
   $MenuCopyWith<$Res>? get menus;
+  $CostumerReviewsCopyWith<$Res>? get reviews;
 }
 
 /// @nodoc
@@ -214,6 +218,7 @@ class _$RestaurantCopyWithImpl<$Res> implements $RestaurantCopyWith<$Res> {
     Object? city = freezed,
     Object? rating = freezed,
     Object? menus = freezed,
+    Object? reviews = freezed,
   }) {
     return _then(_value.copyWith(
       id: id == freezed
@@ -244,6 +249,10 @@ class _$RestaurantCopyWithImpl<$Res> implements $RestaurantCopyWith<$Res> {
           ? _value.menus
           : menus // ignore: cast_nullable_to_non_nullable
               as Menu?,
+      reviews: reviews == freezed
+          ? _value.reviews
+          : reviews // ignore: cast_nullable_to_non_nullable
+              as CostumerReviews?,
     ));
   }
 
@@ -255,6 +264,17 @@ class _$RestaurantCopyWithImpl<$Res> implements $RestaurantCopyWith<$Res> {
 
     return $MenuCopyWith<$Res>(_value.menus!, (value) {
       return _then(_value.copyWith(menus: value));
+    });
+  }
+
+  @override
+  $CostumerReviewsCopyWith<$Res>? get reviews {
+    if (_value.reviews == null) {
+      return null;
+    }
+
+    return $CostumerReviewsCopyWith<$Res>(_value.reviews!, (value) {
+      return _then(_value.copyWith(reviews: value));
     });
   }
 }
@@ -273,10 +293,13 @@ abstract class _$$_RestaurantCopyWith<$Res>
       String pictureId,
       String city,
       double rating,
-      @JsonKey(name: 'menus') Menu? menus});
+      @JsonKey(name: 'menus') Menu? menus,
+      @JsonKey(name: 'customerReviews') CostumerReviews? reviews});
 
   @override
   $MenuCopyWith<$Res>? get menus;
+  @override
+  $CostumerReviewsCopyWith<$Res>? get reviews;
 }
 
 /// @nodoc
@@ -298,6 +321,7 @@ class __$$_RestaurantCopyWithImpl<$Res> extends _$RestaurantCopyWithImpl<$Res>
     Object? city = freezed,
     Object? rating = freezed,
     Object? menus = freezed,
+    Object? reviews = freezed,
   }) {
     return _then(_$_Restaurant(
       id: id == freezed
@@ -328,6 +352,10 @@ class __$$_RestaurantCopyWithImpl<$Res> extends _$RestaurantCopyWithImpl<$Res>
           ? _value.menus
           : menus // ignore: cast_nullable_to_non_nullable
               as Menu?,
+      reviews: reviews == freezed
+          ? _value.reviews
+          : reviews // ignore: cast_nullable_to_non_nullable
+              as CostumerReviews?,
     ));
   }
 }
@@ -342,7 +370,8 @@ class _$_Restaurant implements _Restaurant {
       required this.pictureId,
       required this.city,
       required this.rating,
-      @JsonKey(name: 'menus') this.menus});
+      @JsonKey(name: 'menus') this.menus,
+      @JsonKey(name: 'customerReviews') this.reviews});
 
   factory _$_Restaurant.fromJson(Map<String, dynamic> json) =>
       _$$_RestaurantFromJson(json);
@@ -362,10 +391,13 @@ class _$_Restaurant implements _Restaurant {
   @override
   @JsonKey(name: 'menus')
   final Menu? menus;
+  @override
+  @JsonKey(name: 'customerReviews')
+  final CostumerReviews? reviews;
 
   @override
   String toString() {
-    return 'Restaurant(id: $id, name: $name, description: $description, pictureId: $pictureId, city: $city, rating: $rating, menus: $menus)';
+    return 'Restaurant(id: $id, name: $name, description: $description, pictureId: $pictureId, city: $city, rating: $rating, menus: $menus, reviews: $reviews)';
   }
 
   @override
@@ -380,7 +412,8 @@ class _$_Restaurant implements _Restaurant {
             const DeepCollectionEquality().equals(other.pictureId, pictureId) &&
             const DeepCollectionEquality().equals(other.city, city) &&
             const DeepCollectionEquality().equals(other.rating, rating) &&
-            const DeepCollectionEquality().equals(other.menus, menus));
+            const DeepCollectionEquality().equals(other.menus, menus) &&
+            const DeepCollectionEquality().equals(other.reviews, reviews));
   }
 
   @JsonKey(ignore: true)
@@ -393,7 +426,8 @@ class _$_Restaurant implements _Restaurant {
       const DeepCollectionEquality().hash(pictureId),
       const DeepCollectionEquality().hash(city),
       const DeepCollectionEquality().hash(rating),
-      const DeepCollectionEquality().hash(menus));
+      const DeepCollectionEquality().hash(menus),
+      const DeepCollectionEquality().hash(reviews));
 
   @JsonKey(ignore: true)
   @override
@@ -410,13 +444,15 @@ class _$_Restaurant implements _Restaurant {
 
 abstract class _Restaurant implements Restaurant {
   const factory _Restaurant(
-      {required final String id,
-      required final String name,
-      required final String description,
-      required final String pictureId,
-      required final String city,
-      required final double rating,
-      @JsonKey(name: 'menus') final Menu? menus}) = _$_Restaurant;
+          {required final String id,
+          required final String name,
+          required final String description,
+          required final String pictureId,
+          required final String city,
+          required final double rating,
+          @JsonKey(name: 'menus') final Menu? menus,
+          @JsonKey(name: 'customerReviews') final CostumerReviews? reviews}) =
+      _$_Restaurant;
 
   factory _Restaurant.fromJson(Map<String, dynamic> json) =
       _$_Restaurant.fromJson;
@@ -436,6 +472,9 @@ abstract class _Restaurant implements Restaurant {
   @override
   @JsonKey(name: 'menus')
   Menu? get menus;
+  @override
+  @JsonKey(name: 'customerReviews')
+  CostumerReviews? get reviews;
   @override
   @JsonKey(ignore: true)
   _$$_RestaurantCopyWith<_$_Restaurant> get copyWith =>

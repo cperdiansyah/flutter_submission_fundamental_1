@@ -124,12 +124,17 @@ class RestaurantDetailScreen extends StatelessWidget {
                                 Icon(
                                   Icons.place,
                                   size: 16,
-                                  color: Colors.red,
+                                  color: RestaurantAppColors.GREY_COLOR_1,
                                 ),
                                 SizedBox(width: 4),
                                 Padding(
                                   padding: EdgeInsets.only(top: 2),
-                                  child: Text(restaurant.city.toString()),
+                                  child: Text(
+                                    restaurant.address.toString(),
+                                    style: TextStyle(
+                                        color:
+                                            RestaurantAppColors.GREY_COLOR_1),
+                                  ),
                                 ),
                               ],
                             ),
@@ -137,9 +142,9 @@ class RestaurantDetailScreen extends StatelessWidget {
                           SizedBox(height: 16),
                           ReadMoreText(
                             restaurant.description.toString(),
-                            trimLines: 5,
                             colorClickableText: RestaurantAppColors.MCD_PRIMARY,
-                            trimMode: TrimMode.Length,
+                            trimMode: TrimMode.Line,
+                            trimLines: 10,
                             trimCollapsedText: 'Show More',
                             trimExpandedText: 'Show less',
                             moreStyle: const TextStyle(
@@ -182,7 +187,7 @@ class RestaurantDetailScreen extends StatelessWidget {
                           itemCount: restaurant.menus!.foods?.length,
                           itemBuilder: (context, index) {
                             var foods = restaurant.menus!.foods![index];
-                            return BadgeMenu(menu: foods.name.toString());
+                            return CardMenu(menu: foods.name.toString());
                           },
                         ),
                       ),
@@ -220,7 +225,7 @@ class RestaurantDetailScreen extends StatelessWidget {
                           itemCount: restaurant.menus!.drinks?.length,
                           itemBuilder: (context, index) {
                             var drinks = restaurant.menus!.drinks![index];
-                            return BadgeMenu(menu: drinks.name.toString());
+                            return CardMenu(menu: drinks.name.toString());
                           },
                         ),
                       ),
@@ -242,6 +247,34 @@ class RestaurantDetailScreen extends StatelessWidget {
                               color: Colors.black,
                             ),
                           ),
+                        ],
+                      ),
+                    ),
+                  ),
+                  SliverToBoxAdapter(
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 5.0),
+                      child: Container(
+                        child: ListView.builder(
+                          scrollDirection: Axis.vertical,
+                          shrinkWrap: true,
+                          itemCount: restaurant.customerReviews!.length,
+                          physics: ClampingScrollPhysics(),
+                          itemBuilder: (context, index) {
+                            var review = restaurant.customerReviews![index];
+                            return CardReview(reviews: review);
+                          },
+                        ),
+                      ),
+                    ),
+                  ),
+                  SliverToBoxAdapter(
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 25.0),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: <Widget>[
+                          SizedBox(height: 24),
                         ],
                       ),
                     ),

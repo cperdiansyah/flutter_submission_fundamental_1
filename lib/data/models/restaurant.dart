@@ -1,5 +1,6 @@
 // ignore_for_file: invalid_annotation_target
 import 'package:flutter_application_1/data/models/menu.dart';
+import 'package:flutter_application_1/data/models/review.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'restaurant.freezed.dart';
@@ -18,13 +19,15 @@ class Restaurants with _$Restaurants {
 @freezed
 class Restaurant with _$Restaurant {
   const factory Restaurant(
-      {required String id,
-      required String name,
-      required String description,
-      required String pictureId,
-      required String city,
-      required double rating,
-      @JsonKey(name: 'menus') Menu? menus}) = _Restaurant;
+          {required String id,
+          required String name,
+          required String description,
+          required String pictureId,
+          required String city,
+          required double rating,
+          @JsonKey(name: 'menus') Menu? menus,
+          @JsonKey(name: 'customerReviews') CostumerReviews? reviews}) =
+      _Restaurant;
 
   factory Restaurant.fromJson(Map<String, dynamic> json) =>
       _$RestaurantFromJson(json);

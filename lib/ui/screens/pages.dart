@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/common/colors.dart';
+import 'package:flutter_application_1/data/responses/restaurant_detail_response.dart';
 import 'package:flutter_application_1/provider/provider.dart';
 import 'package:flutter_application_1/services/endpoint.dart';
-import 'package:flutter_application_1/ui/widgets/badge_menu.dart';
+import 'package:flutter_application_1/ui/widgets/card_menu.dart';
 import 'package:flutter_application_1/ui/widgets/card_restaurant.dart';
+import 'package:flutter_application_1/ui/widgets/card_review.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 

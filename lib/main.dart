@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/common/colors.dart';
-import 'package:flutter_application_1/data/models/restaurant.dart';
 import 'package:flutter_application_1/routes/routes.dart';
-import 'package:flutter_application_1/ui/screens/detail_restaurant.dart';
 import 'package:flutter_application_1/ui/screens/pages.dart';
 import 'package:get/get.dart';
 
@@ -27,10 +25,6 @@ class MyApp extends StatelessWidget {
       routes: {
         homepage: (context) => const RestaurantListScreen(),
         // restaurantListRoute: ((context) => const ListRestaurant()),
-        restaurantDetailRoute: ((context) => DetailRestaurant(
-              restaurant:
-                  ModalRoute.of(context)?.settings.arguments as Restaurant,
-            )),
       },
     );
   }

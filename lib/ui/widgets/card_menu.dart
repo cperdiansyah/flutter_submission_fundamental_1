@@ -2,15 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_1/common/colors.dart';
 import 'package:flutter_application_1/data/models/menu.dart';
 
-class BadgeMenu extends StatelessWidget {
+class CardMenu extends StatelessWidget {
   final String menu;
 
-  const BadgeMenu({super.key, required this.menu});
+  const CardMenu({super.key, required this.menu});
 
   @override
   Widget build(BuildContext context) {
     return Card(
       color: Colors.amber[400],
+      shadowColor : Colors.transparent,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(15.0),
       ),
