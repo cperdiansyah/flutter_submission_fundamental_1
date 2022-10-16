@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/services/api_service.dart';
 import 'package:flutter_application_1/data/models/restaurant.dart';
 import 'package:flutter_application_1/common/colors.dart';
 import 'package:readmore/readmore.dart';
@@ -6,13 +7,11 @@ import 'package:readmore/readmore.dart';
 class DetailRestaurant extends StatelessWidget {
   final Restaurant restaurant;
 
-  // const DetailRestaurant({super.key});
   const DetailRestaurant({Key? key, required this.restaurant})
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    print(restaurant);
     return Material(
       child: Scaffold(
         body: SafeArea(

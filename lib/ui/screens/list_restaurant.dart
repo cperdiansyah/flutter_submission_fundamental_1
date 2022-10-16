@@ -2,8 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/common/colors.dart';
 import 'package:flutter_application_1/provider/restaurant_provider.dart';
-import 'package:flutter_application_1/screens/card_restaurant.dart';
-import 'package:flutter_application_1/widgets/platform_widget.dart';
+import 'package:flutter_application_1/ui/screens/card_restaurant.dart';
+import 'package:flutter_application_1/ui/widgets/platform_widget.dart';
 import 'package:provider/provider.dart';
 
 class ListRestaurant extends StatelessWidget {
@@ -128,37 +128,6 @@ class ListRestaurant extends StatelessWidget {
                   }
                 },
               )
-
-              // FutureBuilder(
-              //   future: _restaurant,
-              //   builder: (context, AsyncSnapshot<Restaurants> snapshot) {
-              //     var state = snapshot.connectionState;
-
-              //     if (state != ConnectionState.done) {
-              //       return const Center(child: LoadingView());
-              //     } else {
-              //       if (snapshot.hasData) {
-              //         return ListView.builder(
-              //           shrinkWrap: true,
-              //           physics: const NeverScrollableScrollPhysics(),
-              //           itemCount: snapshot.data?.restaurant.length,
-              //           itemBuilder: (context, index) {
-              //             var restaurant = snapshot.data?.restaurant[index];
-              //             return CardRestaurant(restaurant: restaurant!);
-              //           },
-              //         );
-              //       } else if (snapshot.hasError) {
-              //         return Center(
-              //           child: Material(
-              //             child: Text(snapshot.error.toString()),
-              //           ),
-              //         );
-              //       } else {
-              //         return const Material(child: Text(''));
-              //       }
-              //     }
-              //   },
-              // )
             ],
           ),
         ),

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/data/models/restaurant.dart';
 import 'package:flutter_application_1/routes/routes.dart';
-import 'package:flutter_application_1/screens/home_page.dart';
-import 'package:flutter_application_1/screens/list_restaurant.dart';
-import 'package:flutter_application_1/screens/detail_restaurant.dart';
+import 'package:flutter_application_1/ui/screens/home_page.dart';
+import 'package:flutter_application_1/ui/screens/list_restaurant.dart';
+import 'package:flutter_application_1/ui/screens/detail_restaurant.dart';
 
 void main() {
   runApp(const MyApp());

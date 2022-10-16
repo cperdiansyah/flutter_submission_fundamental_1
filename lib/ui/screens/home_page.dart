@@ -3,11 +3,11 @@ import 'dart:io';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/common/colors.dart';
-import 'package:flutter_application_1/data/api/api_service.dart';
+import 'package:flutter_application_1/services/api_service.dart';
 import 'package:flutter_application_1/provider/restaurant_provider.dart';
-import 'package:flutter_application_1/screens/list_restaurant.dart';
-import 'package:flutter_application_1/screens/setting_page.dart';
-import 'package:flutter_application_1/widgets/platform_widget.dart';
+import 'package:flutter_application_1/ui/screens/list_restaurant.dart';
+import 'package:flutter_application_1/ui/screens/setting_page.dart';
+import 'package:flutter_application_1/ui/widgets/platform_widget.dart';
 import 'package:provider/provider.dart';
 
 class Homepage extends StatefulWidget {
