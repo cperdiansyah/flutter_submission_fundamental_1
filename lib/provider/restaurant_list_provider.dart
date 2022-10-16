@@ -1,18 +1,19 @@
+import 'dart:io';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_application_1/services/api_service.dart';
 import 'package:flutter_application_1/data/models/restaurant.dart';
 
 enum ResultState { loading, noData, hasData, error }
 
-class RestaurantProvider extends ChangeNotifier {
+class RestaurantListProvider extends ChangeNotifier {
   final ApiService apiService;
 
-  RestaurantProvider({required this.apiService}) {
+  RestaurantListProvider({required this.apiService}) {
     _fetchAllRestaurantData();
   }
 
   late Restaurants _restaurants;
-  late Restaurant _restaurant;
   late ResultState _state;
   String _message = '';
 
@@ -37,26 +38,14 @@ class RestaurantProvider extends ChangeNotifier {
         notifyListeners();
         return _restaurants = restaurants;
       }
+    } on SocketException {
+      _state = ResultState.error;
+      notifyListeners();
+      return _message = 'Periksa Koneksi Internet Anda!';
     } catch (e) {
       _state = ResultState.error;
       notifyListeners();
-      return _message = 'Error --> $e';
-    }
-  }
-
-  Future<dynamic> _fetchDetailRestaurantData(String id) async {
-    try {
-      _state = ResultState.loading;
-      notifyListeners();
-      final restaurants = await apiService.getDetailRestaurant(id);
-
-      _state = ResultState.hasData;
-      notifyListeners();
-      return _restaurant = restaurants;
-    } catch (e) {
-      _state = ResultState.error;
-      notifyListeners();
-      return _message = 'Error --> $e';
+      return _message = 'Error -> $e';
     }
   }
 }

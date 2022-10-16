@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/common/colors.dart';
-import 'package:flutter_application_1/provider/restaurant_provider.dart';
-import 'package:flutter_application_1/ui/screens/card_restaurant.dart';
+import 'package:flutter_application_1/provider/restaurant_list_provider.dart';
+import 'package:flutter_application_1/ui/widgets/card_restaurant.dart';
 import 'package:flutter_application_1/ui/widgets/platform_widget.dart';
 import 'package:provider/provider.dart';
 
@@ -93,7 +93,7 @@ class ListRestaurant extends StatelessWidget {
               const SizedBox(
                 height: 10,
               ),
-              Consumer<RestaurantProvider>(
+              Consumer<RestaurantListProvider>(
                 builder: (context, state, _) {
                   if (state.state == ResultState.loading) {
                     return const Center(child: CircularProgressIndicator());

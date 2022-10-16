@@ -15,4 +15,7 @@ class RestaurantAppColors {
   static const Color GREY_COLOR_1 = Color(0xFFB4B4B4);
   static const Color GREY_COLOR_2 = Color(0xFFD8D8D8);
   static const Color GREY_COLOR_3 = Color(0xFFF7F7F7);
+  static const Color GREY_COLOR_4 = Color(0xFF8D92A3);
+
+  static const Color NAVIGATION_COLOR = Color(0xFFfAFAFC);
 }

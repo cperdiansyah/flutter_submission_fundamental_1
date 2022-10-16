@@ -35,6 +35,7 @@ dependencies:
   flutter_native_splash: ^2.2.10+1
   freezed_annotation: ^2.1.0
   go_router: ^5.0.5
+  google_fonts: ^3.0.1
   http: ^0.13.5
   lottie: ^1.4.3
   provider: ^6.0.4
@@ -64,8 +65,7 @@ flutter:
   #   - images/a_dot_ham.jpeg
   assets:
     - assets/local_restaurant.json
-    - assets/lottie/loading_lottie.json
-    - assets/lottie/loading_lottie_2.json
+    - assets/lottie
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
   # For details regarding adding assets from package dependencies, see
