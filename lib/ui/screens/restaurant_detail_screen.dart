@@ -152,44 +152,27 @@ class RestaurantDetailScreen extends StatelessWidget {
                                 color: RestaurantAppColors.MCD_PRIMARY),
                           ),
                           SizedBox(height: 32),
-                          Row(
-                            children: <Widget>[
-                              Expanded(
-                                  child: Divider(
-                                      height: 0,
-                                      thickness: 0.5,
-                                      color: Colors.green)),
-                              SizedBox(
-                                width: 4,
-                              ),
-                              Container(
-                                padding: const EdgeInsets.symmetric(
-                                    vertical: 8, horizontal: 16),
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(36),
-                                  color: RestaurantAppColors.MCD_SECONDARY,
-                                ),
-                                child: Text('Makanan',
-                                    style: TextStyle(
-                                        fontSize: 14, color: Colors.white)),
-                              ),
-                              SizedBox(
-                                width: 4,
-                              ),
-                              Expanded(
-                                  child: Divider(
-                                      height: 0,
-                                      thickness: 0.5,
-                                      color: Colors.green)),
-                            ],
-                          ),
                         ],
                       ),
                     ),
                   ),
                   SliverToBoxAdapter(
                     child: Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                      padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                      child: Text(
+                        'Foods',
+                        style: TextStyle(
+                          fontFamily: GoogleFonts.montserrat().fontFamily,
+                          fontSize: 20,
+                          fontWeight: FontWeight.w700,
+                          color: Colors.black,
+                        ),
+                      ),
+                    ),
+                  ),
+                  SliverToBoxAdapter(
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 5.0),
                       child: Container(
                         height: 50.0,
                         margin: EdgeInsets.only(top: 16.0),
@@ -207,41 +190,19 @@ class RestaurantDetailScreen extends StatelessWidget {
                   ),
                   SliverToBoxAdapter(
                     child: Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                      padding: const EdgeInsets.symmetric(horizontal: 20.0),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: <Widget>[
                           SizedBox(height: 24),
-                          Row(
-                            children: <Widget>[
-                              Expanded(
-                                  child: Divider(
-                                      height: 0,
-                                      thickness: 0.5,
-                                      color: Colors.green)),
-                              SizedBox(
-                                width: 4,
-                              ),
-                              Container(
-                                padding: const EdgeInsets.symmetric(
-                                    vertical: 8, horizontal: 16),
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(36),
-                                  color: RestaurantAppColors.MCD_SECONDARY,
-                                ),
-                                child: Text('Minuman',
-                                    style: TextStyle(
-                                        fontSize: 14, color: Colors.white)),
-                              ),
-                              SizedBox(
-                                width: 4,
-                              ),
-                              Expanded(
-                                  child: Divider(
-                                      height: 0,
-                                      thickness: 0.5,
-                                      color: Colors.green)),
-                            ],
+                          Text(
+                            'Drinks',
+                            style: TextStyle(
+                              fontFamily: GoogleFonts.montserrat().fontFamily,
+                              fontSize: 20,
+                              fontWeight: FontWeight.w700,
+                              color: Colors.black,
+                            ),
                           ),
                         ],
                       ),
@@ -249,7 +210,7 @@ class RestaurantDetailScreen extends StatelessWidget {
                   ),
                   SliverToBoxAdapter(
                     child: Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                      padding: const EdgeInsets.symmetric(horizontal: 5.0),
                       child: Container(
                         height: 50.0,
                         margin: EdgeInsets.only(top: 16.0),
@@ -262,6 +223,26 @@ class RestaurantDetailScreen extends StatelessWidget {
                             return BadgeMenu(menu: drinks.name.toString());
                           },
                         ),
+                      ),
+                    ),
+                  ),
+                  SliverToBoxAdapter(
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: <Widget>[
+                          SizedBox(height: 24),
+                          Text(
+                            'Reviews',
+                            style: TextStyle(
+                              fontFamily: GoogleFonts.montserrat().fontFamily,
+                              fontSize: 20,
+                              fontWeight: FontWeight.w700,
+                              color: Colors.black,
+                            ),
+                          ),
+                        ],
                       ),
                     ),
                   ),

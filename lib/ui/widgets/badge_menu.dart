@@ -10,15 +10,18 @@ class BadgeMenu extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      color: RestaurantAppColors.MCD_SECONDARY,
+      color: Colors.amber[400],
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(15.0),
+      ),
       child: Center(
         child: Padding(
           padding: const EdgeInsets.all(8.0),
           child: Text(
             menu,
             style: TextStyle(
-              fontSize: 16,
-              fontWeight: FontWeight.bold,
+              fontSize: 14,
+              fontWeight: FontWeight.normal,
               color: Colors.white,
             ),
             textAlign: TextAlign.center,
