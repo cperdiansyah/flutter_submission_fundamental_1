@@ -4,6 +4,7 @@ import 'package:flutter_application_1/data/models/restaurant.dart';
 import 'package:flutter_application_1/routes/routes.dart';
 import 'package:flutter_application_1/ui/screens/detail_restaurant.dart';
 import 'package:flutter_application_1/ui/screens/pages.dart';
+import 'package:get/get.dart';
 
 void main() {
   runApp(const MyApp());
@@ -15,8 +16,9 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return GetMaterialApp(
       title: 'Restaurant App Submission 1',
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
           colorScheme: ColorScheme.fromSwatch().copyWith(
               primary: RestaurantAppColors.MCD_SECONDARY,

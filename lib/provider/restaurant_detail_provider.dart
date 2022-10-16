@@ -6,7 +6,8 @@ class RestaurantDetailProvider extends ChangeNotifier {
   final ApiService apiService;
   final String restaurantId;
 
-  RestaurantDetailProvider(this.apiService, this.restaurantId) {
+  RestaurantDetailProvider(
+      {required this.apiService, required this.restaurantId}) {
     fetchDetailRestaurant(restaurantId);
   }
 

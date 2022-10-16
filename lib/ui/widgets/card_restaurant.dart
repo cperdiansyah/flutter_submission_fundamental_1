@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_1/data/models/restaurant.dart';
 import 'package:flutter_application_1/common/colors.dart';
 import 'package:flutter_application_1/routes/routes.dart';
+import 'package:flutter_application_1/ui/screens/pages.dart';
+import 'package:get/get.dart';
 
 class CardRestaurant extends StatelessWidget {
   const CardRestaurant({super.key, required this.restaurant});
@@ -51,8 +53,9 @@ class CardRestaurant extends StatelessWidget {
           ],
         ),
         onTap: () {
-          Navigator.pushNamed(context, restaurantDetailRoute,
-              arguments: restaurant);
+          // Navigator.pushNamed(context, restaurantDetailRoute,
+          //     arguments: restaurant);
+          Get.to(() => RestaurantDetailScreen(), arguments: this.restaurant.id);
         },
       ),
     );
