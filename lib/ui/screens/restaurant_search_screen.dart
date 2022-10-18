@@ -41,7 +41,10 @@ class RestaurantSearchScreen extends StatelessWidget {
                             borderRadius: BorderRadius.circular(8),
                           ),
                         ),
-                        onFieldSubmitted: (keyword) {
+                        // onFieldSubmitted: (keyword) {
+                        //   searchRestaurantsState.searchRestaurant(keyword);
+                        // },
+                        onChanged: (keyword) {
                           searchRestaurantsState.searchRestaurant(keyword);
                         },
                       ),
@@ -60,6 +63,7 @@ class RestaurantSearchScreen extends StatelessWidget {
                   if (state.state == ResultState.loading) {
                     return Center(child: CircularProgressIndicator());
                   } else if (state.state == ResultState.hasData) {
+                    print(state);
                     return ListView.builder(
                         shrinkWrap: true,
                         itemCount: state.result.restaurants!.length,

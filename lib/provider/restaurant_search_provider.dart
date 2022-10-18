@@ -6,8 +6,9 @@ class RestaurantSearchProvider extends ChangeNotifier {
   RestaurantSearchProvider({required this.apiService});
 
   // late Restaurants _restaurants;
-  late RestaurantSearchResponse _restaurantsResult;
-  late ResultState _state;
+  late RestaurantSearchResponse _restaurantsResult =
+      [] as RestaurantSearchResponse;
+  ResultState _state = ResultState.noData;
   String _message = '';
 
   // Restaurants get result => _restaurants;
@@ -16,6 +17,11 @@ class RestaurantSearchProvider extends ChangeNotifier {
   ResultState get state => _state;
 
   Future<dynamic> searchRestaurant(String query) async {
+    if (query.length == 0) {
+      _state = ResultState.error;
+      notifyListeners();
+      return _message = 'Search field is required!';
+    }
     try {
       _state = ResultState.loading;
       notifyListeners();
@@ -33,7 +39,7 @@ class RestaurantSearchProvider extends ChangeNotifier {
     } on SocketException {
       _state = ResultState.error;
       notifyListeners();
-      return _message = 'Periksa Koneksi Internet Anda!';
+      return _message = 'Check ypur connection!';
     } catch (e) {
       _state = ResultState.error;
       notifyListeners();

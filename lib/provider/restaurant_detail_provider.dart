@@ -36,7 +36,7 @@ class RestaurantDetailProvider extends ChangeNotifier {
     } on SocketException {
       _state = ResultState.error;
       notifyListeners();
-      return _message = 'Periksa Koneksi Internet Anda!';
+      return _message = 'Check your connection!';
     } catch (e) {
       _state = ResultState.error;
       notifyListeners();
