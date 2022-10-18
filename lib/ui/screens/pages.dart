@@ -10,9 +10,11 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import 'package:flutter_application_1/services/api_service.dart';
+import 'package:lottie/lottie.dart';
 import 'package:provider/provider.dart';
 import 'package:readmore/readmore.dart';
 
 part 'custom_widget_page.dart';
 part 'restaurant_list_screen.dart';
 part 'restaurant_detail_screen.dart';
+part 'restaurant_search_screen.dart';

@@ -1,8 +1,10 @@
+import 'package:flutter_application_1/data/models/restaurant.dart';
+
 class RestaurantSearchResponse {
   bool? error;
   String? message;
   int? founded;
-  List<RestaurantSearchItemResponse>? restaurants;
+  List<Restaurant>? restaurants;
 
   RestaurantSearchResponse({
     this.error,
@@ -16,9 +18,9 @@ class RestaurantSearchResponse {
     message = json['message'];
     founded = json['founded'];
     if (json['restaurants'] != null) {
-      restaurants = <RestaurantSearchItemResponse>[];
+      restaurants = <Restaurant>[];
       json['restaurants'].forEach((v) {
-        restaurants!.add(RestaurantSearchItemResponse.fromJson(v));
+        restaurants!.add(Restaurant.fromJson(v));
       });
     }
   }

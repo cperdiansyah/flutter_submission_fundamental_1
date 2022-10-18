@@ -32,7 +32,6 @@ class CustomWidgetPage extends StatelessWidget {
                   width: double.infinity,
                   height: 70,
                   padding: EdgeInsets.symmetric(horizontal: 24),
-                  // color: Colors.white,
                   color: RestaurantAppColors.MCD_SECONDARY,
                   child: Row(
                     children: [
@@ -59,15 +58,15 @@ class CustomWidgetPage extends StatelessWidget {
                         child: SizedBox(),
                       ),
                       IconButton(
-                          icon: Icon(Icons.search, color: Colors.white),
-                          onPressed: () {
-                            //   return Get.to(
-                            //   () ChangeNotifierProvider<SearchRestaurantsProvider>(
-                            //           create: (_) => SearchRestaurantsProvider(
-                            //               apiService: ApiService()),
-                            //           child: RestaurantSearchPage()),
-                            // ),
-                          })
+                        icon: Icon(Icons.search, color: Colors.white),
+                        onPressed: () => Get.to(
+                          () =>
+                              ChangeNotifierProvider<RestaurantSearchProvider>(
+                                  create: (_) => RestaurantSearchProvider(
+                                      apiService: ApiService()),
+                                  child: RestaurantSearchScreen()),
+                        ),
+                      )
                     ],
                   ),
                 ),
