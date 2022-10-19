@@ -72,18 +72,22 @@ class RestaurantSearchScreen extends StatelessWidget {
                           return CardRestaurant(restaurant: restaurant);
                         });
                   } else if (state.state == ResultState.noData) {
-                    return Center(
-                      child: Container(
-                        width: 200,
-                        height: 200,
-                        child: Lottie.asset(
-                          'assets/lottie/not_found_lottie.json',
-                          fit: BoxFit.contain,
-                        ),
-                      ),
+                    return Column(
+                      children: [
+                        Container(
+                          width: 200,
+                          height: 200,
+                          child: Lottie.asset(
+                            'assets/lottie/not_found_lottie.json',
+                            fit: BoxFit.contain,
+                          ),
+                        )
+                      ],
                     );
                   } else if (state.state == ResultState.error) {
-                    return Center(child: Text(state.message));
+                    return Column(
+                      children: [Text(state.message)],
+                    );
                   } else {
                     return Center(child: Text(''));
                   }

@@ -32,10 +32,8 @@ class RestaurantListScreen extends StatelessWidget {
                   ),
                 );
               } else if (state.state == ResultState.error) {
-                return Center(
-                  child: Material(
-                    child: Text(state.message),
-                  ),
+                return Column(
+                  children: [Text(state.message)],
                 );
               } else {
                 return const Center(
