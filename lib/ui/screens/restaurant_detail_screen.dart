@@ -233,11 +233,15 @@ class RestaurantDetailScreen extends StatelessWidget {
                   ),
                   SliverToBoxAdapter(
                     child: Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 20.0),
-                      child: Column(
+                      padding: const EdgeInsets.only(
+                        left: 20.0,
+                        right: 20.0,
+                        top: 30,
+                      ),
+                      child: Row(
                         crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: <Widget>[
-                          SizedBox(height: 24),
                           Text(
                             'Reviews',
                             style: TextStyle(
@@ -247,6 +251,20 @@ class RestaurantDetailScreen extends StatelessWidget {
                               color: Colors.black,
                             ),
                           ),
+                          GestureDetector(
+                            onTap: () {
+                              showRegularBottomSheet(
+                                context,
+                                child: AddReview(
+                                  restaurantId: restaurant.id.toString(),
+                                ),
+                              );
+                            },
+                            child: const Icon(
+                              Icons.add_rounded,
+                              color: RestaurantAppColors.MCD_SECONDARY,
+                            ),
+                          )
                         ],
                       ),
                     ),
