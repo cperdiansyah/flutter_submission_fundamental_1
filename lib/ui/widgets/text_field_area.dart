@@ -5,10 +5,13 @@ import 'package:google_fonts/google_fonts.dart';
 class TextFieldArea extends StatelessWidget {
   final String hintText;
   final Function(String? value) onChanged;
+  final TextEditingController? controller;
+
   const TextFieldArea({
     Key? key,
     required this.hintText,
     required this.onChanged,
+    this.controller,
   }) : super(key: key);
 
   @override
@@ -42,7 +45,7 @@ class TextFieldArea extends StatelessWidget {
           maxLines: null,
           keyboardType: TextInputType.multiline,
           onChanged: onChanged,
-          
+          controller: controller,
         ),
       ],
     );
