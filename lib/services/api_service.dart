@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
 
+import 'package:flutter_application_1/data/responses/restaurant_add_review_response.dart';
 import 'package:flutter_application_1/data/responses/restaurant_detail_response.dart';
 import 'package:flutter_application_1/data/responses/restaurant_list_response.dart';
 import 'package:flutter_application_1/data/responses/restaurant_search_response.dart';
@@ -47,6 +48,28 @@ class ApiService {
         .get(Uri.parse("${_baseUrl}${Endpoints.restaurantSearch}?q=${query}"));
     if (response.statusCode == 200) {
       return RestaurantSearchResponse.fromJson(json.decode(response.body));
+    } else {
+      throw Exception('Failed to load');
+    }
+  }
+
+  Future<RestaurantAddReviewResponse> postReviews(
+      String id, String name, String review) async {
+    final response = await http.post(
+      Uri.parse("${_baseUrl}${Endpoints.review}"),
+      headers: {
+        'Content-Type': 'application/json; charset=UTF-8',
+      },
+      body: jsonEncode(
+        {
+          'id': id,
+          'name': name,
+          'review': review,
+        },
+      ),
+    );
+    if (response.statusCode == 200) {
+      return RestaurantAddReviewResponse.fromJson(json.decode(response.body));
     } else {
       throw Exception('Failed to load');
     }

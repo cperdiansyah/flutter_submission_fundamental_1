@@ -8,8 +8,8 @@ class RestaurantListScreen extends StatelessWidget {
     return ChangeNotifierProvider<RestaurantListProvider>(
       create: (_) => RestaurantListProvider(apiService: ApiService()),
       child: CustomWidgetPage(
-        title: "Hola...",
-        subtitle: "Looking for a place to eat",
+        title: "Makan.in",
+        subtitle: "Find A Good Place, Start Your Good Taste",
         child: Container(
           margin: EdgeInsets.symmetric(horizontal: 12),
           child: Consumer<RestaurantListProvider>(

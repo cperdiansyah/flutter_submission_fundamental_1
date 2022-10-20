@@ -49,8 +49,13 @@ class CustomWidgetPage extends StatelessWidget {
                           Text(
                             subtitle,
                             style: GoogleFonts.poppins(
-                                color: RestaurantAppColors.GREY_COLOR_3,
-                                fontWeight: FontWeight.w300),
+                              color: RestaurantAppColors.GREY_COLOR_3,
+                              fontWeight: FontWeight.w300,
+                              fontSize: 13,
+                            ),
+                            softWrap: true,
+                            maxLines: 2,
+                            overflow: TextOverflow.fade,
                           )
                         ],
                       ),
@@ -62,9 +67,10 @@ class CustomWidgetPage extends StatelessWidget {
                         onPressed: () => Get.to(
                           () =>
                               ChangeNotifierProvider<RestaurantSearchProvider>(
-                                  create: (_) => RestaurantSearchProvider(
-                                      apiService: ApiService()),
-                                  child: RestaurantSearchScreen()),
+                            create: (_) => RestaurantSearchProvider(
+                                apiService: ApiService()),
+                            child: RestaurantSearchScreen(),
+                          ),
                         ),
                       )
                     ],

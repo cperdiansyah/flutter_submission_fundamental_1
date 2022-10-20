@@ -25,29 +25,28 @@ class RestaurantSearchScreen extends StatelessWidget {
               child: Column(
                 children: <Widget>[
                   SizedBox(height: 16),
-                  Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 24),
-                    child: Container(
-                      height: 40,
-                      child: TextFormField(
-                        controller: _textEditingController,
-                        focusNode: _focusNode,
-                        decoration: InputDecoration(
-                          prefixIcon: Icon(Icons.search),
-                          filled: true,
-                          fillColor: Colors.white,
-                          contentPadding: EdgeInsets.symmetric(horizontal: 16),
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(8),
+                  Container(
+                    height: 40,
+                    child: TextFormField(
+                      controller: _textEditingController,
+                      focusNode: _focusNode,
+                      decoration: InputDecoration(
+                        prefixIcon: Icon(Icons.search),
+                        fillColor: Color(0xFFF6F7FB),
+                        hintText: "Looking for a place to eat ?",
+                        filled: true,
+                        contentPadding: EdgeInsets.symmetric(horizontal: 16),
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(8),
+                          borderSide: const BorderSide(
+                            width: 0,
+                            style: BorderStyle.none,
                           ),
                         ),
-                        // onFieldSubmitted: (keyword) {
-                        //   searchRestaurantsState.searchRestaurant(keyword);
-                        // },
-                        onChanged: (keyword) {
-                          searchRestaurantsState.searchRestaurant(keyword);
-                        },
                       ),
+                      onChanged: (keyword) {
+                        searchRestaurantsState.searchRestaurant(keyword);
+                      },
                     ),
                   ),
                 ],

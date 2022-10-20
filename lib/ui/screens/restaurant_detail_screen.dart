@@ -239,7 +239,7 @@ class RestaurantDetailScreen extends StatelessWidget {
                         top: 30,
                       ),
                       child: Row(
-                        crossAxisAlignment: CrossAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.center,
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: <Widget>[
                           Text(
@@ -251,18 +251,21 @@ class RestaurantDetailScreen extends StatelessWidget {
                               color: Colors.black,
                             ),
                           ),
-                          GestureDetector(
-                            onTap: () {
-                              showRegularBottomSheet(
-                                context,
-                                child: AddReview(
-                                  restaurantId: restaurant.id.toString(),
-                                ),
-                              );
-                            },
-                            child: const Icon(
-                              Icons.add_rounded,
-                              color: RestaurantAppColors.MCD_SECONDARY,
+                          Padding(
+                            padding: const EdgeInsets.all(12.0),
+                            child: GestureDetector(
+                              onTap: () {
+                                showRegularBottomSheet(
+                                  context,
+                                  child: AddReview(
+                                    restaurantId: restaurant.id.toString(),
+                                  ),
+                                );
+                              },
+                              child: const Icon(
+                                Icons.add_rounded,
+                                color: RestaurantAppColors.MCD_SECONDARY,
+                              ),
                             ),
                           )
                         ],
