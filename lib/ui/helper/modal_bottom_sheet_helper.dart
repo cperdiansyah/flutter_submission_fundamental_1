@@ -14,10 +14,10 @@ void showRegularBottomSheet(context, {required Widget child}) {
       builder: (context) => child,
     );
   } else {
-    showMaterialModalBottomSheet(
-      expand: false,
+    showModalBottomSheet(
       context: context,
       enableDrag: true,
+      isScrollControlled: true,
       backgroundColor: Colors.transparent,
       builder: (context) => child,
     );

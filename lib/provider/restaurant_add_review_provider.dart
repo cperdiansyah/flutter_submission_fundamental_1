@@ -8,7 +8,7 @@ class RestaurantAddReviewProvider extends ChangeNotifier {
   bool? loading;
 
   RestaurantAddReviewProvider(
-      {required this.apiService, this.restaurantId, this.name, this.reviews});
+      {required this.apiService, this.restaurantId});
 
   late RestaurantAddReviewResponse _restaurantsResult =
       [] as RestaurantAddReviewResponse;
@@ -39,20 +39,14 @@ class RestaurantAddReviewProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  printState() {
-    print(name);
-    print(reviews);
-    print(restaurantId);
-  }
-
   Future<dynamic> postAddReview(
-      String restaurantId, String name, String reviews) async {
+      String restaurantId) async {
     try {
       _state = ResultState.loading;
       notifyListeners();
       updateLoading(true);
       final resReviews =
-          await apiService.postReviews(restaurantId, name, reviews);
+          await apiService.postReviews(restaurantId, name!, reviews!);
       if (resReviews == null) {
         _state = ResultState.noData;
         updateLoading(false);

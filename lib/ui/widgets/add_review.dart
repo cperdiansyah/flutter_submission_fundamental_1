@@ -77,7 +77,15 @@ class AddReview extends StatelessWidget {
                       textValue: 'Submit Review',
                       isLoading: state.loading,
                       onPressed: () {
-                        providerAddReview.printState();
+                        if (state.restaurantId != null &&
+                            state.name != null &&
+                            state.reviews != null) {
+                          providerAddReview
+                              .postAddReview(restaurantId)
+                              .whenComplete(() => Navigator.pop(context));
+                        } else {
+                          Navigator.pop(context, true);
+                        }
                       },
                     ),
                   ],
