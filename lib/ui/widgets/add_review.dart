@@ -82,6 +82,10 @@ class AddReview extends StatelessWidget {
                             state.reviews != null) {
                           providerAddReview
                               .postAddReview(restaurantId)
+                              .then((value) =>
+                                  Provider.of<RestaurantDetailProvider>(context,
+                                          listen: false)
+                                      .fetchDetailRestaurant(restaurantId))
                               .whenComplete(() => Navigator.pop(context));
                         } else {
                           Navigator.pop(context, true);

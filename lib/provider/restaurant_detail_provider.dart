@@ -19,6 +19,11 @@ class RestaurantDetailProvider extends ChangeNotifier {
   RestaurantDetailResponse get result => _detailRestaurant;
   ResultState get state => _state;
 
+  void updateDetailReview(List<CostumerReviews> reviews) {
+    _detailRestaurant = reviews as RestaurantDetailResponse;
+    notifyListeners();
+  }
+
   Future<dynamic> fetchDetailRestaurant(String restaurantId) async {
     try {
       _state = ResultState.loading;
