@@ -46,16 +46,20 @@ class CustomWidgetPage extends StatelessWidget {
                                 fontWeight: FontWeight.w500,
                                 color: Colors.white),
                           ),
-                          Text(
-                            subtitle,
-                            style: GoogleFonts.poppins(
-                              color: RestaurantAppColors.GREY_COLOR_3,
-                              fontWeight: FontWeight.w300,
-                              fontSize: 13,
+                          Expanded(
+                            child: SizedBox(
+                              width: MediaQuery.of(context).size.width * 0.7,
+                              child: Text(
+                                subtitle,
+                                style: GoogleFonts.poppins(
+                                  color: RestaurantAppColors.GREY_COLOR_3,
+                                  fontWeight: FontWeight.w300,
+                                  fontSize: 13,
+                                ),
+                                softWrap: true,
+                                maxLines: 2,
+                              ),
                             ),
-                            softWrap: true,
-                            maxLines: 2,
-                            overflow: TextOverflow.fade,
                           )
                         ],
                       ),
