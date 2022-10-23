@@ -8,7 +8,7 @@ class RestaurantSearchProvider extends ChangeNotifier {
   // late Restaurants _restaurants;
   late RestaurantSearchResponse _restaurantsResult =
       [] as RestaurantSearchResponse;
-  ResultState _state = ResultState.noData;
+  ResultState _state = ResultState.initialLoad;
   String _message = '';
 
   // Restaurants get result => _restaurants;

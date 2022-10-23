@@ -62,7 +62,7 @@ class RestaurantSearchScreen extends StatelessWidget {
                   if (state.state == ResultState.loading) {
                     return Center(child: CircularProgressIndicator());
                   } else if (state.state == ResultState.hasData) {
-                    print(state);
+                    
                     return ListView.builder(
                         shrinkWrap: true,
                         itemCount: state.result.restaurants!.length,
@@ -71,6 +71,7 @@ class RestaurantSearchScreen extends StatelessWidget {
                           return CardRestaurant(restaurant: restaurant);
                         });
                   } else if (state.state == ResultState.noData) {
+                    
                     return Column(
                       children: [
                         Container(
@@ -86,6 +87,21 @@ class RestaurantSearchScreen extends StatelessWidget {
                   } else if (state.state == ResultState.error) {
                     return Column(
                       children: [Text(state.message)],
+                    );
+                  } else if (state.state == ResultState.initialLoad) {
+                    return Column(
+                      children: [
+                        Text(
+                          "Please search for restaurants by name or menu",
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                            fontFamily: GoogleFonts.montserrat().fontFamily,
+                            fontSize: 16,
+                            fontWeight: FontWeight.w600,
+                            color: Colors.black,
+                          ),
+                        )
+                      ],
                     );
                   } else {
                     return Center(child: Text(''));

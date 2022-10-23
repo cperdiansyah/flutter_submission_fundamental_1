@@ -30,7 +30,7 @@ class CustomWidgetPage extends StatelessWidget {
               children: [
                 Container(
                   width: double.infinity,
-                  height: 70,
+                  height: 80,
                   padding: EdgeInsets.symmetric(horizontal: 24),
                   color: RestaurantAppColors.MCD_SECONDARY,
                   child: Row(

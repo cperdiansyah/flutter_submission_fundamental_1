@@ -4,11 +4,11 @@ part of 'provider.dart';
 
 class RestaurantDetailProvider extends ChangeNotifier {
   final ApiService apiService;
-  final String restaurantId;
+  final String? restaurantId;
 
   RestaurantDetailProvider(
       {required this.apiService, required this.restaurantId}) {
-    fetchDetailRestaurant(restaurantId);
+    fetchDetailRestaurant(restaurantId!);
   }
 
   late RestaurantDetailResponse _detailRestaurant;
