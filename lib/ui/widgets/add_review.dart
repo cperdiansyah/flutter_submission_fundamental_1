@@ -80,11 +80,8 @@ class AddReview extends StatelessWidget {
                         if (state.restaurantId != null &&
                             state.name != null &&
                             state.reviews != null) {
-                          providerAddReview.postAddReview(restaurantId);
-
-                          return Provider.of<RestaurantDetailProvider>(context,
-                                  listen: false)
-                              .fetchDetailRestaurant(restaurantId)
+                          return providerAddReview
+                              .postAddReview(restaurantId)
                               .whenComplete(() => Navigator.pop(context));
                         } else {
                           Navigator.pop(context, true);
