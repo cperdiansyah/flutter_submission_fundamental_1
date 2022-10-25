@@ -39,7 +39,7 @@ class RestaurantSearchProvider extends ChangeNotifier {
     } on SocketException {
       _state = ResultState.error;
       notifyListeners();
-      return _message = 'Check ypur connection!';
+      return _message = 'Check your connection!';
     } catch (e) {
       _state = ResultState.error;
       notifyListeners();

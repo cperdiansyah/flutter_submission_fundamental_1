@@ -6,8 +6,7 @@ class RestaurantDetailScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider<RestaurantDetailProvider>(
-      create: (_) => RestaurantDetailProvider(
-          apiService: ApiService(), restaurantId: restaurantId),
+      create: (_) => RestaurantDetailProvider(apiService: ApiService(), restaurantId: restaurantId),
       child: Scaffold(
         body: Consumer<RestaurantDetailProvider>(
           builder: (context, state, _) {
@@ -33,8 +32,7 @@ class RestaurantDetailScreen extends StatelessWidget {
                           Hero(
                             tag: restaurant.pictureId.toString(),
                             child: Image.network(
-                              "${Endpoints.imageUrlMedium}" +
-                                  "${restaurant.pictureId}",
+                              "${Endpoints.imageUrlMedium}" + "${restaurant.pictureId}",
                               fit: BoxFit.cover,
                               width: MediaQuery.of(context).size.width,
                             ),
@@ -47,11 +45,7 @@ class RestaurantDetailScreen extends StatelessWidget {
                               gradient: LinearGradient(
                                 begin: Alignment.topCenter,
                                 end: Alignment.bottomCenter,
-                                colors: <Color>[
-                                  Colors.black.withAlpha(0),
-                                  Colors.black12,
-                                  Colors.black45
-                                ],
+                                colors: <Color>[Colors.black.withAlpha(0), Colors.black12, Colors.black45],
                               ),
                             ),
                             child: Padding(
@@ -61,20 +55,16 @@ class RestaurantDetailScreen extends StatelessWidget {
                                 crossAxisAlignment: CrossAxisAlignment.end,
                                 children: <Widget>[
                                   Column(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
+                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                    crossAxisAlignment: CrossAxisAlignment.start,
                                     children: <Widget>[
                                       Container(
                                         child: Row(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.end,
+                                          mainAxisAlignment: MainAxisAlignment.end,
                                           children: [
                                             Icon(
                                               Icons.star,
-                                              color: RestaurantAppColors
-                                                  .MCD_SECONDARY,
+                                              color: RestaurantAppColors.MCD_SECONDARY,
                                             ),
                                             SizedBox(
                                               width: 8,
@@ -100,14 +90,10 @@ class RestaurantDetailScreen extends StatelessWidget {
                       ),
                       title: Text(
                         restaurant.name.toString(),
-                        style: TextStyle(
-                            fontWeight: FontWeight.w700,
-                            color: Colors.white,
-                            fontSize: 15.0),
+                        style: TextStyle(fontWeight: FontWeight.w700, color: Colors.white, fontSize: 15.0),
                       ),
                       centerTitle: true,
-                      titlePadding: EdgeInsets.symmetric(
-                          horizontal: 16.0, vertical: 12.0),
+                      titlePadding: EdgeInsets.symmetric(horizontal: 16.0, vertical: 12.0),
                     ),
                   ),
                   SliverToBoxAdapter(
@@ -131,9 +117,7 @@ class RestaurantDetailScreen extends StatelessWidget {
                                   padding: EdgeInsets.only(top: 2),
                                   child: Text(
                                     restaurant.address.toString(),
-                                    style: TextStyle(
-                                        color:
-                                            RestaurantAppColors.GREY_COLOR_1),
+                                    style: TextStyle(color: RestaurantAppColors.GREY_COLOR_1),
                                   ),
                                 ),
                               ],
@@ -148,13 +132,9 @@ class RestaurantDetailScreen extends StatelessWidget {
                             trimCollapsedText: 'Show More',
                             trimExpandedText: 'Show less',
                             moreStyle: const TextStyle(
-                                fontSize: 12,
-                                fontWeight: FontWeight.w400,
-                                color: RestaurantAppColors.MCD_PRIMARY),
+                                fontSize: 12, fontWeight: FontWeight.w400, color: RestaurantAppColors.MCD_PRIMARY),
                             lessStyle: const TextStyle(
-                                fontSize: 12,
-                                fontWeight: FontWeight.w400,
-                                color: RestaurantAppColors.MCD_PRIMARY),
+                                fontSize: 12, fontWeight: FontWeight.w400, color: RestaurantAppColors.MCD_PRIMARY),
                           ),
                           SizedBox(height: 32),
                         ],
@@ -255,12 +235,16 @@ class RestaurantDetailScreen extends StatelessWidget {
                             padding: const EdgeInsets.all(12.0),
                             child: GestureDetector(
                               onTap: () {
-                                showRegularBottomSheet(
-                                  context,
-                                  child: AddReview(
+                                showModalBottomSheet(
+                                  context: context,
+                                  enableDrag: true,
+                                  isScrollControlled: true,
+                                  backgroundColor: Colors.transparent,
+                                  builder: (context) => AddReview(
                                     restaurantId: restaurant.id.toString(),
                                   ),
-                                );
+                                ).then((value) => Provider.of<RestaurantDetailProvider>(context, listen: false)
+                                    .fetchDetailRestaurant(restaurantId));
                               },
                               child: const Icon(
                                 Icons.add_rounded,

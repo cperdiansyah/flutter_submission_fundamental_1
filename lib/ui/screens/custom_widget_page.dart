@@ -30,41 +30,34 @@ class CustomWidgetPage extends StatelessWidget {
               children: [
                 Container(
                   width: double.infinity,
-                  height: 80,
                   padding: EdgeInsets.symmetric(horizontal: 24),
                   color: RestaurantAppColors.MCD_SECONDARY,
                   child: Row(
                     children: [
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text(
-                            title,
-                            style: GoogleFonts.poppins(
-                                fontSize: 21,
-                                fontWeight: FontWeight.w500,
-                                color: Colors.white),
-                          ),
-                          Expanded(
-                            child: SizedBox(
-                              width: MediaQuery.of(context).size.width * 0.7,
-                              child: Text(
-                                subtitle,
-                                style: GoogleFonts.poppins(
-                                  color: RestaurantAppColors.GREY_COLOR_3,
-                                  fontWeight: FontWeight.w300,
-                                  fontSize: 13,
-                                ),
-                                softWrap: true,
-                                maxLines: 2,
-                              ),
+                      Flexible(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(
+                              title,
+                              style: GoogleFonts.poppins(
+                                  fontSize: 21,
+                                  fontWeight: FontWeight.w500,
+                                  color: Colors.white),
                             ),
-                          )
-                        ],
-                      ),
-                      Expanded(
-                        child: SizedBox(),
+                            Text(
+                              subtitle,
+                              style: GoogleFonts.poppins(
+                                color: RestaurantAppColors.GREY_COLOR_3,
+                                fontWeight: FontWeight.w300,
+                                fontSize: 13,
+                              ),
+                              softWrap: true,
+                              maxLines: 2,
+                            ),
+                          ],
+                        ),
                       ),
                       IconButton(
                         icon: Icon(Icons.search, color: Colors.white),

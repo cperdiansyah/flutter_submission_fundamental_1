@@ -18,12 +18,10 @@ class AddReview extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider<RestaurantAddReviewProvider>(
-      create: (_) => RestaurantAddReviewProvider(
-          apiService: ApiService(), restaurantId: restaurantId),
+      create: (_) => RestaurantAddReviewProvider(apiService: ApiService(), restaurantId: restaurantId),
       child: Consumer<RestaurantAddReviewProvider>(
         builder: (context, state, _) {
-          final providerAddReview =
-              Provider.of<RestaurantAddReviewProvider>(context);
+          final providerAddReview = Provider.of<RestaurantAddReviewProvider>(context);
 
           return Padding(
             padding: MediaQuery.of(context).viewInsets,
@@ -77,9 +75,7 @@ class AddReview extends StatelessWidget {
                       textValue: 'Submit Review',
                       isLoading: state.loading,
                       onPressed: () {
-                        if (state.restaurantId != null &&
-                            state.name != null &&
-                            state.reviews != null) {
+                        if (state.restaurantId != null && state.name != null && state.reviews != null) {
                           return providerAddReview
                               .postAddReview(restaurantId)
                               .whenComplete(() => Navigator.pop(context));

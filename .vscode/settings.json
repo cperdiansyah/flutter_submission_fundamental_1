@@ -1,0 +1,12 @@
+{
+  "editor.minimap.maxColumn": 180,
+  "editor.wordWrapColumn": 120,
+  "editor.wordWrap": "on",
+  "html.format.wrapLineLength": 180,
+  "dart.lineLength": 120,
+  "[dart]": {
+    "editor.rulers": [
+      120
+    ],
+  }
+}
