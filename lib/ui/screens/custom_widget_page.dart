@@ -8,11 +8,7 @@ class CustomWidgetPage extends StatelessWidget {
   final Color? backColor;
 
   CustomWidgetPage(
-      {this.title = "Title",
-      this.subtitle = "subtitle",
-      this.onBackButtonPressed,
-      this.child,
-      this.backColor});
+      {this.title = "Title", this.subtitle = "subtitle", this.onBackButtonPressed, this.child, this.backColor});
 
   @override
   Widget build(BuildContext context) {
@@ -33,6 +29,7 @@ class CustomWidgetPage extends StatelessWidget {
                   padding: EdgeInsets.symmetric(horizontal: 24),
                   color: RestaurantAppColors.MCD_SECONDARY,
                   child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Flexible(
                         child: Column(
@@ -41,10 +38,8 @@ class CustomWidgetPage extends StatelessWidget {
                           children: [
                             Text(
                               title,
-                              style: GoogleFonts.poppins(
-                                  fontSize: 21,
-                                  fontWeight: FontWeight.w500,
-                                  color: Colors.white),
+                              style:
+                                  GoogleFonts.poppins(fontSize: 21, fontWeight: FontWeight.w500, color: Colors.white),
                             ),
                             Text(
                               subtitle,
@@ -56,16 +51,17 @@ class CustomWidgetPage extends StatelessWidget {
                               softWrap: true,
                               maxLines: 2,
                             ),
+                            const SizedBox(
+                              height: 12,
+                            )
                           ],
                         ),
                       ),
                       IconButton(
                         icon: Icon(Icons.search, color: Colors.white),
                         onPressed: () => Get.to(
-                          () =>
-                              ChangeNotifierProvider<RestaurantSearchProvider>(
-                            create: (_) => RestaurantSearchProvider(
-                                apiService: ApiService()),
+                          () => ChangeNotifierProvider<RestaurantSearchProvider>(
+                            create: (_) => RestaurantSearchProvider(apiService: ApiService()),
                             child: RestaurantSearchScreen(),
                           ),
                         ),
@@ -87,6 +83,25 @@ class CustomWidgetPage extends StatelessWidget {
                 )
               ],
             ),
+          ),
+        ],
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        items: <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home),
+            label: 'Home',
+            backgroundColor: RestaurantAppColors.MCD_SECONDARY,
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.favorite),
+            label: 'Favorite',
+            backgroundColor: RestaurantAppColors.MCD_SECONDARY,
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.settings),
+            label: 'Settings',
+            backgroundColor: RestaurantAppColors.MCD_SECONDARY,
           ),
         ],
       ),
