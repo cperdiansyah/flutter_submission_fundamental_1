@@ -22,8 +22,8 @@ class MyApp extends StatelessWidget {
               .copyWith(primary: RestaurantAppColors.MCD_SECONDARY, secondary: RestaurantAppColors.MCD_PRIMARY)),
       initialRoute: homepage,
       routes: {
-        homepage: (context) => const RestaurantListScreen(),
-        // restaurantListRoute: ((context) => const ListRestaurant()),
+        // homepage: (context) => const RestaurantListScreen(),
+        homepage: (context) => const Homepage()
       },
     );
   }

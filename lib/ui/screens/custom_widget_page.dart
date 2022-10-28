@@ -51,7 +51,7 @@ class CustomWidgetPage extends StatelessWidget {
                               softWrap: true,
                               maxLines: 2,
                             ),
-                            const SizedBox(
+                            SizedBox(
                               height: 12,
                             )
                           ],
@@ -83,25 +83,6 @@ class CustomWidgetPage extends StatelessWidget {
                 )
               ],
             ),
-          ),
-        ],
-      ),
-      bottomNavigationBar: BottomNavigationBar(
-        items: <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: 'Home',
-            backgroundColor: RestaurantAppColors.MCD_SECONDARY,
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.favorite),
-            label: 'Favorite',
-            backgroundColor: RestaurantAppColors.MCD_SECONDARY,
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.settings),
-            label: 'Settings',
-            backgroundColor: RestaurantAppColors.MCD_SECONDARY,
           ),
         ],
       ),
