@@ -10,7 +10,7 @@ class Homepage extends StatefulWidget {
 class _HomepageState extends State<Homepage> {
   int currentIndex = 0;
 
-  final List<Widget> _children = [RestaurantListScreen(), FavoriteScreen(), SettingScreen()];
+  final List<Widget> _children = [const RestaurantListScreen(), const FavoriteScreen(), const SettingScreen()];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -19,7 +19,7 @@ class _HomepageState extends State<Homepage> {
         onTap: onTabTapped,
         backgroundColor: Colors.white,
         currentIndex: currentIndex,
-        items: <BottomNavigationBarItem>[
+        items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
             label: 'Home',

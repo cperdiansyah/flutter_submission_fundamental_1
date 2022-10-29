@@ -59,12 +59,7 @@ class CustomWidgetPage extends StatelessWidget {
                       ),
                       IconButton(
                         icon: Icon(Icons.search, color: Colors.white),
-                        onPressed: () => Get.to(
-                          () => ChangeNotifierProvider<RestaurantSearchProvider>(
-                            create: (_) => RestaurantSearchProvider(apiService: ApiService()),
-                            child: RestaurantSearchScreen(),
-                          ),
-                        ),
+                        onPressed: () => Get.to(() => RestaurantSearchScreen()),
                       )
                     ],
                   ),

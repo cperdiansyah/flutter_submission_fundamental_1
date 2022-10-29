@@ -1,7 +1,9 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/data/database_local/database_local.dart';
 import 'package:flutter_application_1/provider/provider.dart';
 import 'package:flutter_application_1/routes/routes.dart';
+import 'package:flutter_application_1/services/api_service.dart';
 import 'package:flutter_application_1/ui/helper/preferences_helper.dart';
 import 'package:flutter_application_1/ui/screens/pages.dart';
 import 'package:get/get.dart';
@@ -20,6 +22,16 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
+        ChangeNotifierProvider<RestaurantListProvider>(
+          create: (_) => RestaurantListProvider(
+            apiService: ApiService(),
+          ),
+        ),
+        ChangeNotifierProvider<RestaurantSearchProvider>(
+          create: (_) => RestaurantSearchProvider(
+            apiService: ApiService(),
+          ),
+        ),
         ChangeNotifierProvider(
           create: (_) => PreferencesProvider(
             preferencesHelper: PreferencesHelper(
@@ -36,17 +48,21 @@ class MyApp extends StatelessWidget {
       child: Consumer<PreferencesProvider>(
         builder: (context, provider, child) {
           return GetMaterialApp(
-            title: 'Restaurant App Submission 1',
+            title: 'Restaurant App Submission',
             debugShowCheckedModeBanner: false,
-            // theme: ThemeData(
-            //     colorScheme: ColorScheme.fromSwatch()
-            //         .copyWith(primary: RestaurantAppColors.MCD_SECONDARY, secondary: RestaurantAppColors.MCD_PRIMARY)),
             theme: provider.themeData,
-            initialRoute: homepage,
-            routes: {
-              // homepage: (context) => const RestaurantListScreen(),
-              homepage: (context) => const Homepage()
+            builder: (context, child) {
+              return CupertinoTheme(
+                data: CupertinoThemeData(
+                  brightness: provider.isDarkTheme ? Brightness.dark : Brightness.light,
+                ),
+                child: Material(
+                  child: child,
+                ),
+              );
             },
+            initialRoute: homepage,
+            routes: {homepage: (context) => const Homepage()},
           );
         },
       ),
