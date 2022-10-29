@@ -1,5 +1,3 @@
-
-
 part of 'provider.dart';
 
 class DatabaseProvider extends ChangeNotifier {
@@ -24,7 +22,7 @@ class DatabaseProvider extends ChangeNotifier {
       _state = ResultState.hasData;
     } else {
       _state = ResultState.noData;
-      _message = 'Wah Kosong! Yuk Tambah Resto Favorit!';
+      _message = 'Favorite is empty, please add favorites data';
     }
     notifyListeners();
   }

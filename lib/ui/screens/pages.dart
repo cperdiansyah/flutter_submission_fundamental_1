@@ -3,7 +3,7 @@ import 'package:flutter_application_1/common/colors.dart';
 import 'package:flutter_application_1/provider/provider.dart';
 import 'package:flutter_application_1/services/api_service.dart';
 import 'package:flutter_application_1/services/endpoint.dart';
-import 'package:flutter_application_1/ui/screens/favorite_screen.dart';
+import 'package:flutter_application_1/ui/screens/restaurant_favorite_screen.dart';
 import 'package:flutter_application_1/ui/screens/setting_screen.dart';
 import 'package:flutter_application_1/ui/widgets/add_review.dart';
 import 'package:flutter_application_1/ui/widgets/card_menu.dart';

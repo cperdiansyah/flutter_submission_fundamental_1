@@ -48,8 +48,8 @@ class FavoriteScreen extends StatelessWidget {
             },
           );
         } else {
-          return Center(
-            child: Material(
+          return Material(
+            child: Center(
               child: Text(
                 provider.message,
                 style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
