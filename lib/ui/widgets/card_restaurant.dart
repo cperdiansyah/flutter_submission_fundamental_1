@@ -105,6 +105,17 @@ class CardRestaurant extends StatelessWidget {
                   )
                 ],
               ),
+              trailing: isFavorited
+                  ? IconButton(
+                      icon: const Icon(Icons.favorite),
+                      color: Theme.of(context).colorScheme.secondary,
+                      onPressed: () => provider.removeFavorite(restaurant.id),
+                    )
+                  : IconButton(
+                      icon: const Icon(Icons.favorite_border),
+                      color: Theme.of(context).colorScheme.secondary,
+                      onPressed: () => provider.addFavorite(restaurant),
+                    ),
               onTap: () {
                 Get.to(() => RestaurantDetailScreen(), arguments: this.restaurant.id);
               },

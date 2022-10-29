@@ -1,4 +1,4 @@
-import 'dart:ui';
+import 'package:flutter/material.dart';
 
 const Color primaryColor = Color(0xFF2196f3);
 const Color successColor = Color(0xFF4caf50);
@@ -17,3 +17,8 @@ const Color greyColor3 = Color(0xFFF7F7F7);
 const Color greyColor4 = Color(0xFF8D92A3);
 
 const Color navigationColor = Color(0xFFfAFAFC);
+
+const TextStyle navigationTextStyle = TextStyle(
+  fontWeight: FontWeight.w500,
+  color: Colors.white,
+);
