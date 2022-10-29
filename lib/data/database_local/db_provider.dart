@@ -1,4 +1,4 @@
-part of 'local.dart';
+part of 'database_local.dart';
 
 class DbProvider extends ChangeNotifier {
   final DatabaseHelper databaseHelper;

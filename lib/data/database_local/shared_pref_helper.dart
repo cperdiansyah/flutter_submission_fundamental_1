@@ -1,4 +1,4 @@
-part of 'local.dart';
+part of 'database_local.dart';
 
 class SharedPrefHelper {
   final Future<SharedPreferences> sharedPreferences;
