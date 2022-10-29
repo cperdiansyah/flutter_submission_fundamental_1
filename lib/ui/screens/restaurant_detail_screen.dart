@@ -108,63 +108,19 @@ class RestaurantDetailScreen extends StatelessWidget {
                           Padding(
                             padding: EdgeInsets.only(left: 3),
                             child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: <Widget>[
-                                Column(
-                                  children: [
-                                    Row(
-                                      children: [
-                                        Icon(
-                                          Icons.place,
-                                          size: 16,
-                                          color: greyColor1,
-                                        ),
-                                        SizedBox(width: 4),
-                                        Padding(
-                                          padding: EdgeInsets.only(top: 2),
-                                          child: Text(
-                                            restaurant.address.toString(),
-                                            style: TextStyle(color: greyColor1),
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ],
+                                Icon(
+                                  Icons.place,
+                                  size: 16,
+                                  color: greyColor1,
                                 ),
-                                Column(
-                                  children: [
-                                    Consumer<DatabaseProvider>(
-                                      builder: (context, provider, child) {
-                                        return FutureBuilder<bool>(
-                                          future: provider.isFavorited(restaurantId),
-                                          builder: (context, snapshot) {
-                                            var isFav = snapshot.data ?? false;
-                                            return FloatingActionButton(
-                                              backgroundColor: mcdSecondary,
-                                              child: Icon(
-                                                Icons.favorite,
-                                                color: isFav ? Colors.red : Colors.white,
-                                              ),
-                                              onPressed: () {
-                                                isFav
-                                                    ? IconButton(
-                                                        icon: const Icon(Icons.favorite),
-                                                        color: Theme.of(context).colorScheme.secondary,
-                                                        onPressed: () => provider.removeFavorite(restaurantId),
-                                                      )
-                                                    : IconButton(
-                                                        icon: const Icon(Icons.favorite_border),
-                                                        color: Theme.of(context).colorScheme.secondary,
-                                                        onPressed: () => provider.addFavorite(restaurant as Restaurant),
-                                                        // onPressed: () {},
-                                                      );
-                                              },
-                                            );
-                                          },
-                                        );
-                                      },
-                                    ),
-                                  ],
+                                SizedBox(width: 4),
+                                Padding(
+                                  padding: EdgeInsets.only(top: 2),
+                                  child: Text(
+                                    restaurant.address.toString(),
+                                    style: TextStyle(color: greyColor1),
+                                  ),
                                 ),
                               ],
                             ),

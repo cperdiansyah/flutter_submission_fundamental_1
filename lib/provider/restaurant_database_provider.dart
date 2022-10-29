@@ -37,6 +37,7 @@ class DatabaseProvider extends ChangeNotifier {
       notifyListeners();
     }
   }
+
   void addFavoriteDetail(Restaurant resto) async {
     try {
       await databaseHelper.insertFavorite(resto);
