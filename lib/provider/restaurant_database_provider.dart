@@ -37,6 +37,16 @@ class DatabaseProvider extends ChangeNotifier {
       notifyListeners();
     }
   }
+  void addFavoriteDetail(Restaurant resto) async {
+    try {
+      await databaseHelper.insertFavorite(resto);
+      _getFavorite();
+    } catch (e) {
+      _state = ResultState.error;
+      _message = 'Error: $e';
+      notifyListeners();
+    }
+  }
 
   Future<bool> isFavorited(String id) async {
     final favoritedResto = await databaseHelper.getFavoriteById(id);
