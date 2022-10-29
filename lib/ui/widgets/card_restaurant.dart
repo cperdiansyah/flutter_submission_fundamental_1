@@ -85,7 +85,7 @@ class CardRestaurant extends StatelessWidget {
                     children: [
                       Icon(
                         Icons.location_on_outlined,
-                        color: RestaurantAppColors.GREY_COLOR_1,
+                        color: greyColor1,
                         size: 21,
                       ),
                       Text(
@@ -97,7 +97,7 @@ class CardRestaurant extends StatelessWidget {
                     children: [
                       Icon(
                         Icons.star,
-                        color: RestaurantAppColors.GREY_COLOR_1,
+                        color: greyColor1,
                         size: 18,
                       ),
                       Text(restaurant.rating.toString())

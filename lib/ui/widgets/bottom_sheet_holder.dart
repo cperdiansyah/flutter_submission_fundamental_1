@@ -13,7 +13,7 @@ class BottomSheetHolder extends StatelessWidget {
       child: Container(
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(12.0),
-          color: RestaurantAppColors.MCD_SECONDARY,
+          color: mcdSecondary,
         ),
         height: 4.0,
         width: MediaQuery.of(context).size.width * 0.12,

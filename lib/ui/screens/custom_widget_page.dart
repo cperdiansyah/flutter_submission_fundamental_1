@@ -27,7 +27,7 @@ class CustomWidgetPage extends StatelessWidget {
                 Container(
                   width: double.infinity,
                   padding: EdgeInsets.symmetric(horizontal: 24),
-                  color: RestaurantAppColors.MCD_SECONDARY,
+                  color: mcdSecondary,
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -44,7 +44,7 @@ class CustomWidgetPage extends StatelessWidget {
                             Text(
                               subtitle,
                               style: GoogleFonts.poppins(
-                                color: RestaurantAppColors.GREY_COLOR_3,
+                                color: greyColor3,
                                 fontWeight: FontWeight.w300,
                                 fontSize: 13,
                               ),
@@ -72,7 +72,7 @@ class CustomWidgetPage extends StatelessWidget {
                 Container(
                   height: 12,
                   width: double.infinity,
-                  color: RestaurantAppColors.NAVIGATION_COLOR,
+                  color: navigationColor,
                 ),
                 SizedBox(
                   width: double.infinity,

@@ -1,21 +1,19 @@
 import 'dart:ui';
 
-class RestaurantAppColors {
-  static const Color PRIMARY_COLOR = Color(0xFF2196f3);
-  static const Color ACCENT_COLOR = Color(0xFF4caf50);
-  static const Color WARNING_COLOR = Color(0xFFffc107);
-  static const Color DANGER_COLOR = Color(0xFFf44336);
+const Color primaryColor = Color(0xFF2196f3);
+const Color successColor = Color(0xFF4caf50);
+const Color warningColor = Color(0xFFffc107);
+const Color dangerColor = Color(0xFFf44336);
 
-  static const Color MCD_PRIMARY = Color(0xFFD62718);
-  static const Color MCD_SECONDARY = Color(0xFFFFFCC00);
+const Color mcdPrimary = Color(0xFFD62718);
+const Color mcdSecondary = Color(0xFFFFFCC00);
 
-  static const Color TEXT_PRIMARY_COLOR = Color(0xFF707070);
-  static const Color TEXT_SECONDARY_COLOR = Color(0xFF5C5C5C);
+const Color textPrimaryColor = Color(0xFF707070);
+const Color textSecondaryColor = Color(0xFF5C5C5C);
 
-  static const Color GREY_COLOR_1 = Color(0xFFB4B4B4);
-  static const Color GREY_COLOR_2 = Color(0xFFD8D8D8);
-  static const Color GREY_COLOR_3 = Color(0xFFF7F7F7);
-  static const Color GREY_COLOR_4 = Color(0xFF8D92A3);
+const Color greyColor1 = Color(0xFFB4B4B4);
+const Color greyColor2 = Color(0xFFD8D8D8);
+const Color greyColor3 = Color(0xFFF7F7F7);
+const Color greyColor4 = Color(0xFF8D92A3);
 
-  static const Color NAVIGATION_COLOR = Color(0xFFfAFAFC);
-}
+const Color navigationColor = Color(0xFFfAFAFC);

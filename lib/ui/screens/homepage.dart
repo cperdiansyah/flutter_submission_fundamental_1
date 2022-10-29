@@ -23,17 +23,17 @@ class _HomepageState extends State<Homepage> {
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
             label: 'Home',
-            backgroundColor: RestaurantAppColors.MCD_SECONDARY,
+            backgroundColor: mcdSecondary,
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.favorite),
             label: 'Favorite',
-            backgroundColor: RestaurantAppColors.MCD_SECONDARY,
+            backgroundColor: mcdSecondary,
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.settings),
             label: 'Settings',
-            backgroundColor: RestaurantAppColors.MCD_SECONDARY,
+            backgroundColor: mcdSecondary,
           ),
         ],
       ),

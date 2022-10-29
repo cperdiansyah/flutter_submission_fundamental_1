@@ -64,7 +64,7 @@ class RestaurantDetailScreen extends StatelessWidget {
                                           children: [
                                             Icon(
                                               Icons.star,
-                                              color: RestaurantAppColors.MCD_SECONDARY,
+                                              color: mcdSecondary,
                                             ),
                                             SizedBox(
                                               width: 8,
@@ -110,14 +110,14 @@ class RestaurantDetailScreen extends StatelessWidget {
                                 Icon(
                                   Icons.place,
                                   size: 16,
-                                  color: RestaurantAppColors.GREY_COLOR_1,
+                                  color: greyColor1,
                                 ),
                                 SizedBox(width: 4),
                                 Padding(
                                   padding: EdgeInsets.only(top: 2),
                                   child: Text(
                                     restaurant.address.toString(),
-                                    style: TextStyle(color: RestaurantAppColors.GREY_COLOR_1),
+                                    style: TextStyle(color: greyColor1),
                                   ),
                                 ),
                               ],
@@ -126,15 +126,13 @@ class RestaurantDetailScreen extends StatelessWidget {
                           SizedBox(height: 16),
                           ReadMoreText(
                             restaurant.description.toString(),
-                            colorClickableText: RestaurantAppColors.MCD_PRIMARY,
+                            colorClickableText: mcdPrimary,
                             trimMode: TrimMode.Line,
                             trimLines: 10,
                             trimCollapsedText: 'Show More',
                             trimExpandedText: 'Show less',
-                            moreStyle: const TextStyle(
-                                fontSize: 12, fontWeight: FontWeight.w400, color: RestaurantAppColors.MCD_PRIMARY),
-                            lessStyle: const TextStyle(
-                                fontSize: 12, fontWeight: FontWeight.w400, color: RestaurantAppColors.MCD_PRIMARY),
+                            moreStyle: const TextStyle(fontSize: 12, fontWeight: FontWeight.w400, color: mcdPrimary),
+                            lessStyle: const TextStyle(fontSize: 12, fontWeight: FontWeight.w400, color: mcdPrimary),
                           ),
                           SizedBox(height: 32),
                         ],
@@ -248,7 +246,7 @@ class RestaurantDetailScreen extends StatelessWidget {
                               },
                               child: const Icon(
                                 Icons.add_rounded,
-                                color: RestaurantAppColors.MCD_SECONDARY,
+                                color: mcdSecondary,
                               ),
                             ),
                           )

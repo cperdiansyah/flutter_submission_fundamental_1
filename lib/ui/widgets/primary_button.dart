@@ -11,7 +11,7 @@ class CustomPrimaryButton extends StatelessWidget {
 
   const CustomPrimaryButton(
       {super.key,
-      this.buttonColor = RestaurantAppColors.MCD_SECONDARY,
+      this.buttonColor = mcdSecondary,
       this.textValue = '',
       this.textColor = Colors.white,
       required this.onPressed,

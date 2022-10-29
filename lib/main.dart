@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/common/colors.dart';
+import 'package:flutter_application_1/data/database_local/database_local.dart';
+import 'package:flutter_application_1/provider/provider.dart';
 import 'package:flutter_application_1/routes/routes.dart';
+import 'package:flutter_application_1/ui/helper/preferences_helper.dart';
 import 'package:flutter_application_1/ui/screens/pages.dart';
 import 'package:get/get.dart';
 import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 void main() {
   runApp(const MyApp());
@@ -16,21 +19,37 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MultiProvider(
-      providers:[],
-      child: [
-        GetMaterialApp(
-          title: 'Restaurant App Submission 1',
-          debugShowCheckedModeBanner: false,
-          theme: ThemeData(
-              colorScheme: ColorScheme.fromSwatch()
-                  .copyWith(primary: RestaurantAppColors.MCD_SECONDARY, secondary: RestaurantAppColors.MCD_PRIMARY)),
-          initialRoute: homepage,
-          routes: {
-            // homepage: (context) => const RestaurantListScreen(),
-            homepage: (context) => const Homepage()
-          },
+      providers: [
+        ChangeNotifierProvider(
+          create: (_) => PreferencesProvider(
+            preferencesHelper: PreferencesHelper(
+              sharedPreferences: SharedPreferences.getInstance(),
+            ),
+          ),
+        ),
+        ChangeNotifierProvider<DatabaseProvider>(
+          create: (_) => DatabaseProvider(
+            databaseHelper: DatabaseHelper(),
+          ),
         ),
       ],
+      child: Consumer<PreferencesProvider>(
+        builder: (context, provider, child) {
+          return GetMaterialApp(
+            title: 'Restaurant App Submission 1',
+            debugShowCheckedModeBanner: false,
+            // theme: ThemeData(
+            //     colorScheme: ColorScheme.fromSwatch()
+            //         .copyWith(primary: RestaurantAppColors.MCD_SECONDARY, secondary: RestaurantAppColors.MCD_PRIMARY)),
+            theme: provider.themeData,
+            initialRoute: homepage,
+            routes: {
+              // homepage: (context) => const RestaurantListScreen(),
+              homepage: (context) => const Homepage()
+            },
+          );
+        },
+      ),
     );
   }
 }
