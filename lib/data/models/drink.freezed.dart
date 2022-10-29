@@ -30,28 +30,32 @@ mixin _$Drink {
 /// @nodoc
 abstract class $DrinkCopyWith<$Res> {
   factory $DrinkCopyWith(Drink value, $Res Function(Drink) then) =
-      _$DrinkCopyWithImpl<$Res>;
+      _$DrinkCopyWithImpl<$Res, Drink>;
+  @useResult
   $Res call({String name});
 }
 
 /// @nodoc
-class _$DrinkCopyWithImpl<$Res> implements $DrinkCopyWith<$Res> {
+class _$DrinkCopyWithImpl<$Res, $Val extends Drink>
+    implements $DrinkCopyWith<$Res> {
   _$DrinkCopyWithImpl(this._value, this._then);
 
-  final Drink _value;
   // ignore: unused_field
-  final $Res Function(Drink) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? name = freezed,
+    Object? name = null,
   }) {
     return _then(_value.copyWith(
-      name: name == freezed
+      name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
-    ));
+    ) as $Val);
   }
 }
 
@@ -60,24 +64,23 @@ abstract class _$$_DrinkCopyWith<$Res> implements $DrinkCopyWith<$Res> {
   factory _$$_DrinkCopyWith(_$_Drink value, $Res Function(_$_Drink) then) =
       __$$_DrinkCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call({String name});
 }
 
 /// @nodoc
-class __$$_DrinkCopyWithImpl<$Res> extends _$DrinkCopyWithImpl<$Res>
+class __$$_DrinkCopyWithImpl<$Res> extends _$DrinkCopyWithImpl<$Res, _$_Drink>
     implements _$$_DrinkCopyWith<$Res> {
   __$$_DrinkCopyWithImpl(_$_Drink _value, $Res Function(_$_Drink) _then)
-      : super(_value, (v) => _then(v as _$_Drink));
+      : super(_value, _then);
 
-  @override
-  _$_Drink get _value => super._value as _$_Drink;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? name = freezed,
+    Object? name = null,
   }) {
     return _then(_$_Drink(
-      name: name == freezed
+      name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
@@ -106,16 +109,16 @@ class _$_Drink implements _Drink {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_Drink &&
-            const DeepCollectionEquality().equals(other.name, name));
+            (identical(other.name, name) || other.name == name));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(name));
+  int get hashCode => Object.hash(runtimeType, name);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_DrinkCopyWith<_$_Drink> get copyWith =>
       __$$_DrinkCopyWithImpl<_$_Drink>(this, _$identity);
 

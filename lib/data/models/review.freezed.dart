@@ -34,39 +34,42 @@ mixin _$CostumerReviews {
 abstract class $CostumerReviewsCopyWith<$Res> {
   factory $CostumerReviewsCopyWith(
           CostumerReviews value, $Res Function(CostumerReviews) then) =
-      _$CostumerReviewsCopyWithImpl<$Res>;
+      _$CostumerReviewsCopyWithImpl<$Res, CostumerReviews>;
+  @useResult
   $Res call({String name, String review, String date});
 }
 
 /// @nodoc
-class _$CostumerReviewsCopyWithImpl<$Res>
+class _$CostumerReviewsCopyWithImpl<$Res, $Val extends CostumerReviews>
     implements $CostumerReviewsCopyWith<$Res> {
   _$CostumerReviewsCopyWithImpl(this._value, this._then);
 
-  final CostumerReviews _value;
   // ignore: unused_field
-  final $Res Function(CostumerReviews) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? name = freezed,
-    Object? review = freezed,
-    Object? date = freezed,
+    Object? name = null,
+    Object? review = null,
+    Object? date = null,
   }) {
     return _then(_value.copyWith(
-      name: name == freezed
+      name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
-      review: review == freezed
+      review: null == review
           ? _value.review
           : review // ignore: cast_nullable_to_non_nullable
               as String,
-      date: date == freezed
+      date: null == date
           ? _value.date
           : date // ignore: cast_nullable_to_non_nullable
               as String,
-    ));
+    ) as $Val);
   }
 }
 
@@ -77,36 +80,35 @@ abstract class _$$_CostumerReviewsCopyWith<$Res>
           _$_CostumerReviews value, $Res Function(_$_CostumerReviews) then) =
       __$$_CostumerReviewsCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call({String name, String review, String date});
 }
 
 /// @nodoc
 class __$$_CostumerReviewsCopyWithImpl<$Res>
-    extends _$CostumerReviewsCopyWithImpl<$Res>
+    extends _$CostumerReviewsCopyWithImpl<$Res, _$_CostumerReviews>
     implements _$$_CostumerReviewsCopyWith<$Res> {
   __$$_CostumerReviewsCopyWithImpl(
       _$_CostumerReviews _value, $Res Function(_$_CostumerReviews) _then)
-      : super(_value, (v) => _then(v as _$_CostumerReviews));
+      : super(_value, _then);
 
-  @override
-  _$_CostumerReviews get _value => super._value as _$_CostumerReviews;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? name = freezed,
-    Object? review = freezed,
-    Object? date = freezed,
+    Object? name = null,
+    Object? review = null,
+    Object? date = null,
   }) {
     return _then(_$_CostumerReviews(
-      name: name == freezed
+      name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
-      review: review == freezed
+      review: null == review
           ? _value.review
           : review // ignore: cast_nullable_to_non_nullable
               as String,
-      date: date == freezed
+      date: null == date
           ? _value.date
           : date // ignore: cast_nullable_to_non_nullable
               as String,
@@ -140,21 +142,18 @@ class _$_CostumerReviews implements _CostumerReviews {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_CostumerReviews &&
-            const DeepCollectionEquality().equals(other.name, name) &&
-            const DeepCollectionEquality().equals(other.review, review) &&
-            const DeepCollectionEquality().equals(other.date, date));
+            (identical(other.name, name) || other.name == name) &&
+            (identical(other.review, review) || other.review == review) &&
+            (identical(other.date, date) || other.date == date));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(name),
-      const DeepCollectionEquality().hash(review),
-      const DeepCollectionEquality().hash(date));
+  int get hashCode => Object.hash(runtimeType, name, review, date);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_CostumerReviewsCopyWith<_$_CostumerReviews> get copyWith =>
       __$$_CostumerReviewsCopyWithImpl<_$_CostumerReviews>(this, _$identity);
 

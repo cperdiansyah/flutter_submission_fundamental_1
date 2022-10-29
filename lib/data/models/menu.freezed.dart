@@ -33,35 +33,39 @@ mixin _$Menu {
 /// @nodoc
 abstract class $MenuCopyWith<$Res> {
   factory $MenuCopyWith(Menu value, $Res Function(Menu) then) =
-      _$MenuCopyWithImpl<$Res>;
+      _$MenuCopyWithImpl<$Res, Menu>;
+  @useResult
   $Res call(
       {@JsonKey(name: 'foods') List<Drink> foods,
       @JsonKey(name: 'drinks') List<Drink> drinks});
 }
 
 /// @nodoc
-class _$MenuCopyWithImpl<$Res> implements $MenuCopyWith<$Res> {
+class _$MenuCopyWithImpl<$Res, $Val extends Menu>
+    implements $MenuCopyWith<$Res> {
   _$MenuCopyWithImpl(this._value, this._then);
 
-  final Menu _value;
   // ignore: unused_field
-  final $Res Function(Menu) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? foods = freezed,
-    Object? drinks = freezed,
+    Object? foods = null,
+    Object? drinks = null,
   }) {
     return _then(_value.copyWith(
-      foods: foods == freezed
+      foods: null == foods
           ? _value.foods
           : foods // ignore: cast_nullable_to_non_nullable
               as List<Drink>,
-      drinks: drinks == freezed
+      drinks: null == drinks
           ? _value.drinks
           : drinks // ignore: cast_nullable_to_non_nullable
               as List<Drink>,
-    ));
+    ) as $Val);
   }
 }
 
@@ -70,31 +74,30 @@ abstract class _$$_MenuCopyWith<$Res> implements $MenuCopyWith<$Res> {
   factory _$$_MenuCopyWith(_$_Menu value, $Res Function(_$_Menu) then) =
       __$$_MenuCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {@JsonKey(name: 'foods') List<Drink> foods,
       @JsonKey(name: 'drinks') List<Drink> drinks});
 }
 
 /// @nodoc
-class __$$_MenuCopyWithImpl<$Res> extends _$MenuCopyWithImpl<$Res>
+class __$$_MenuCopyWithImpl<$Res> extends _$MenuCopyWithImpl<$Res, _$_Menu>
     implements _$$_MenuCopyWith<$Res> {
   __$$_MenuCopyWithImpl(_$_Menu _value, $Res Function(_$_Menu) _then)
-      : super(_value, (v) => _then(v as _$_Menu));
+      : super(_value, _then);
 
-  @override
-  _$_Menu get _value => super._value as _$_Menu;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? foods = freezed,
-    Object? drinks = freezed,
+    Object? foods = null,
+    Object? drinks = null,
   }) {
     return _then(_$_Menu(
-      foods: foods == freezed
+      foods: null == foods
           ? _value._foods
           : foods // ignore: cast_nullable_to_non_nullable
               as List<Drink>,
-      drinks: drinks == freezed
+      drinks: null == drinks
           ? _value._drinks
           : drinks // ignore: cast_nullable_to_non_nullable
               as List<Drink>,
@@ -152,6 +155,7 @@ class _$_Menu implements _Menu {
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_MenuCopyWith<_$_Menu> get copyWith =>
       __$$_MenuCopyWithImpl<_$_Menu>(this, _$identity);
 

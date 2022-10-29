@@ -33,28 +33,32 @@ mixin _$Restaurants {
 abstract class $RestaurantsCopyWith<$Res> {
   factory $RestaurantsCopyWith(
           Restaurants value, $Res Function(Restaurants) then) =
-      _$RestaurantsCopyWithImpl<$Res>;
+      _$RestaurantsCopyWithImpl<$Res, Restaurants>;
+  @useResult
   $Res call({@JsonKey(name: 'restaurants') List<Restaurant> restaurant});
 }
 
 /// @nodoc
-class _$RestaurantsCopyWithImpl<$Res> implements $RestaurantsCopyWith<$Res> {
+class _$RestaurantsCopyWithImpl<$Res, $Val extends Restaurants>
+    implements $RestaurantsCopyWith<$Res> {
   _$RestaurantsCopyWithImpl(this._value, this._then);
 
-  final Restaurants _value;
   // ignore: unused_field
-  final $Res Function(Restaurants) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? restaurant = freezed,
+    Object? restaurant = null,
   }) {
     return _then(_value.copyWith(
-      restaurant: restaurant == freezed
+      restaurant: null == restaurant
           ? _value.restaurant
           : restaurant // ignore: cast_nullable_to_non_nullable
               as List<Restaurant>,
-    ));
+    ) as $Val);
   }
 }
 
@@ -65,25 +69,25 @@ abstract class _$$_RestaurantsCopyWith<$Res>
           _$_Restaurants value, $Res Function(_$_Restaurants) then) =
       __$$_RestaurantsCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call({@JsonKey(name: 'restaurants') List<Restaurant> restaurant});
 }
 
 /// @nodoc
-class __$$_RestaurantsCopyWithImpl<$Res> extends _$RestaurantsCopyWithImpl<$Res>
+class __$$_RestaurantsCopyWithImpl<$Res>
+    extends _$RestaurantsCopyWithImpl<$Res, _$_Restaurants>
     implements _$$_RestaurantsCopyWith<$Res> {
   __$$_RestaurantsCopyWithImpl(
       _$_Restaurants _value, $Res Function(_$_Restaurants) _then)
-      : super(_value, (v) => _then(v as _$_Restaurants));
+      : super(_value, _then);
 
-  @override
-  _$_Restaurants get _value => super._value as _$_Restaurants;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? restaurant = freezed,
+    Object? restaurant = null,
   }) {
     return _then(_$_Restaurants(
-      restaurant: restaurant == freezed
+      restaurant: null == restaurant
           ? _value._restaurant
           : restaurant // ignore: cast_nullable_to_non_nullable
               as List<Restaurant>,
@@ -131,6 +135,7 @@ class _$_Restaurants implements _Restaurants {
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_RestaurantsCopyWith<_$_Restaurants> get copyWith =>
       __$$_RestaurantsCopyWithImpl<_$_Restaurants>(this, _$identity);
 
@@ -186,7 +191,8 @@ mixin _$Restaurant {
 abstract class $RestaurantCopyWith<$Res> {
   factory $RestaurantCopyWith(
           Restaurant value, $Res Function(Restaurant) then) =
-      _$RestaurantCopyWithImpl<$Res>;
+      _$RestaurantCopyWithImpl<$Res, Restaurant>;
+  @useResult
   $Res call(
       {String id,
       String name,
@@ -202,79 +208,84 @@ abstract class $RestaurantCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$RestaurantCopyWithImpl<$Res> implements $RestaurantCopyWith<$Res> {
+class _$RestaurantCopyWithImpl<$Res, $Val extends Restaurant>
+    implements $RestaurantCopyWith<$Res> {
   _$RestaurantCopyWithImpl(this._value, this._then);
 
-  final Restaurant _value;
   // ignore: unused_field
-  final $Res Function(Restaurant) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = freezed,
-    Object? name = freezed,
-    Object? description = freezed,
-    Object? pictureId = freezed,
-    Object? city = freezed,
-    Object? rating = freezed,
+    Object? id = null,
+    Object? name = null,
+    Object? description = null,
+    Object? pictureId = null,
+    Object? city = null,
+    Object? rating = null,
     Object? menus = freezed,
     Object? reviews = freezed,
   }) {
     return _then(_value.copyWith(
-      id: id == freezed
+      id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String,
-      name: name == freezed
+      name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
-      description: description == freezed
+      description: null == description
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
               as String,
-      pictureId: pictureId == freezed
+      pictureId: null == pictureId
           ? _value.pictureId
           : pictureId // ignore: cast_nullable_to_non_nullable
               as String,
-      city: city == freezed
+      city: null == city
           ? _value.city
           : city // ignore: cast_nullable_to_non_nullable
               as String,
-      rating: rating == freezed
+      rating: null == rating
           ? _value.rating
           : rating // ignore: cast_nullable_to_non_nullable
               as double,
-      menus: menus == freezed
+      menus: freezed == menus
           ? _value.menus
           : menus // ignore: cast_nullable_to_non_nullable
               as Menu?,
-      reviews: reviews == freezed
+      reviews: freezed == reviews
           ? _value.reviews
           : reviews // ignore: cast_nullable_to_non_nullable
               as CostumerReviews?,
-    ));
+    ) as $Val);
   }
 
   @override
+  @pragma('vm:prefer-inline')
   $MenuCopyWith<$Res>? get menus {
     if (_value.menus == null) {
       return null;
     }
 
     return $MenuCopyWith<$Res>(_value.menus!, (value) {
-      return _then(_value.copyWith(menus: value));
+      return _then(_value.copyWith(menus: value) as $Val);
     });
   }
 
   @override
+  @pragma('vm:prefer-inline')
   $CostumerReviewsCopyWith<$Res>? get reviews {
     if (_value.reviews == null) {
       return null;
     }
 
     return $CostumerReviewsCopyWith<$Res>(_value.reviews!, (value) {
-      return _then(_value.copyWith(reviews: value));
+      return _then(_value.copyWith(reviews: value) as $Val);
     });
   }
 }
@@ -286,6 +297,7 @@ abstract class _$$_RestaurantCopyWith<$Res>
           _$_Restaurant value, $Res Function(_$_Restaurant) then) =
       __$$_RestaurantCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {String id,
       String name,
@@ -303,56 +315,55 @@ abstract class _$$_RestaurantCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_RestaurantCopyWithImpl<$Res> extends _$RestaurantCopyWithImpl<$Res>
+class __$$_RestaurantCopyWithImpl<$Res>
+    extends _$RestaurantCopyWithImpl<$Res, _$_Restaurant>
     implements _$$_RestaurantCopyWith<$Res> {
   __$$_RestaurantCopyWithImpl(
       _$_Restaurant _value, $Res Function(_$_Restaurant) _then)
-      : super(_value, (v) => _then(v as _$_Restaurant));
+      : super(_value, _then);
 
-  @override
-  _$_Restaurant get _value => super._value as _$_Restaurant;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = freezed,
-    Object? name = freezed,
-    Object? description = freezed,
-    Object? pictureId = freezed,
-    Object? city = freezed,
-    Object? rating = freezed,
+    Object? id = null,
+    Object? name = null,
+    Object? description = null,
+    Object? pictureId = null,
+    Object? city = null,
+    Object? rating = null,
     Object? menus = freezed,
     Object? reviews = freezed,
   }) {
     return _then(_$_Restaurant(
-      id: id == freezed
+      id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String,
-      name: name == freezed
+      name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
-      description: description == freezed
+      description: null == description
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
               as String,
-      pictureId: pictureId == freezed
+      pictureId: null == pictureId
           ? _value.pictureId
           : pictureId // ignore: cast_nullable_to_non_nullable
               as String,
-      city: city == freezed
+      city: null == city
           ? _value.city
           : city // ignore: cast_nullable_to_non_nullable
               as String,
-      rating: rating == freezed
+      rating: null == rating
           ? _value.rating
           : rating // ignore: cast_nullable_to_non_nullable
               as double,
-      menus: menus == freezed
+      menus: freezed == menus
           ? _value.menus
           : menus // ignore: cast_nullable_to_non_nullable
               as Menu?,
-      reviews: reviews == freezed
+      reviews: freezed == reviews
           ? _value.reviews
           : reviews // ignore: cast_nullable_to_non_nullable
               as CostumerReviews?,
@@ -405,32 +416,26 @@ class _$_Restaurant implements _Restaurant {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_Restaurant &&
-            const DeepCollectionEquality().equals(other.id, id) &&
-            const DeepCollectionEquality().equals(other.name, name) &&
-            const DeepCollectionEquality()
-                .equals(other.description, description) &&
-            const DeepCollectionEquality().equals(other.pictureId, pictureId) &&
-            const DeepCollectionEquality().equals(other.city, city) &&
-            const DeepCollectionEquality().equals(other.rating, rating) &&
-            const DeepCollectionEquality().equals(other.menus, menus) &&
-            const DeepCollectionEquality().equals(other.reviews, reviews));
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.name, name) || other.name == name) &&
+            (identical(other.description, description) ||
+                other.description == description) &&
+            (identical(other.pictureId, pictureId) ||
+                other.pictureId == pictureId) &&
+            (identical(other.city, city) || other.city == city) &&
+            (identical(other.rating, rating) || other.rating == rating) &&
+            (identical(other.menus, menus) || other.menus == menus) &&
+            (identical(other.reviews, reviews) || other.reviews == reviews));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(id),
-      const DeepCollectionEquality().hash(name),
-      const DeepCollectionEquality().hash(description),
-      const DeepCollectionEquality().hash(pictureId),
-      const DeepCollectionEquality().hash(city),
-      const DeepCollectionEquality().hash(rating),
-      const DeepCollectionEquality().hash(menus),
-      const DeepCollectionEquality().hash(reviews));
+  int get hashCode => Object.hash(runtimeType, id, name, description, pictureId,
+      city, rating, menus, reviews);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_RestaurantCopyWith<_$_Restaurant> get copyWith =>
       __$$_RestaurantCopyWithImpl<_$_Restaurant>(this, _$identity);
 

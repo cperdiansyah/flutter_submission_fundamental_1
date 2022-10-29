@@ -12,23 +12,20 @@ class Restaurants with _$Restaurants {
     @JsonKey(name: 'restaurants') required List<Restaurant> restaurant,
   }) = _Restaurants;
 
-  factory Restaurants.fromJson(Map<String, dynamic> json) =>
-      _$RestaurantsFromJson(json);
+  factory Restaurants.fromJson(Map<String, dynamic> json) => _$RestaurantsFromJson(json);
 }
 
 @freezed
 class Restaurant with _$Restaurant {
   const factory Restaurant(
-          {required String id,
-          required String name,
-          required String description,
-          required String pictureId,
-          required String city,
-          required double rating,
-          @JsonKey(name: 'menus') Menu? menus,
-          @JsonKey(name: 'customerReviews') CostumerReviews? reviews}) =
-      _Restaurant;
+      {required String id,
+      required String name,
+      required String description,
+      required String pictureId,
+      required String city,
+      required double rating,
+      @JsonKey(name: 'menus') Menu? menus,
+      @JsonKey(name: 'customerReviews') CostumerReviews? reviews}) = _Restaurant;
 
-  factory Restaurant.fromJson(Map<String, dynamic> json) =>
-      _$RestaurantFromJson(json);
+  factory Restaurant.fromJson(Map<String, dynamic> json) => _$RestaurantFromJson(json);
 }
