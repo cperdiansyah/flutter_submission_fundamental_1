@@ -50,9 +50,12 @@ class FavoriteScreen extends StatelessWidget {
         } else {
           return Material(
             child: Center(
-              child: Text(
-                provider.message,
-                style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+              child: SizedBox(
+                width: MediaQuery.of(context).size.width * 0.7,
+                child: Text(
+                  provider.message,
+                  style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                ),
               ),
             ),
           );

@@ -64,15 +64,6 @@ class CustomWidgetPage extends StatelessWidget {
                     ],
                   ),
                 ),
-                Container(
-                  height: 12,
-                  width: double.infinity,
-                  color: navigationColor,
-                ),
-                SizedBox(
-                  width: double.infinity,
-                  height: 12,
-                ),
                 Expanded(
                   child: child ?? SizedBox(),
                 )
