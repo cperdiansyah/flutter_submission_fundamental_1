@@ -1,10 +1,12 @@
 import 'dart:io';
 
+import 'package:android_alarm_manager_plus/android_alarm_manager_plus.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/common/colors.dart';
 import 'package:flutter_application_1/provider/provider.dart';
 import 'package:flutter_application_1/provider/provider_scheduling_resto.dart';
+import 'package:flutter_application_1/ui/helper/background_service.dart';
 import 'package:flutter_application_1/ui/widgets/custom_dialog.dart';
 import 'package:flutter_application_1/ui/widgets/multi_platform.dart';
 import 'package:provider/provider.dart';
@@ -39,6 +41,8 @@ class SettingScreen extends StatelessWidget {
   }
 
   Widget _buildList(BuildContext context) {
+    final schedulerState = Provider.of<SchedulingProvider>(context);
+
     return Consumer<PreferencesProvider>(
       builder: (context, provider, child) {
         return ListView(
@@ -73,6 +77,14 @@ class SettingScreen extends StatelessWidget {
                   },
                 ),
               ),
+            ),
+            ElevatedButton(
+              child: const Text(
+                'Alarm with Delayed (Test)',
+              ),
+              onPressed: () async {
+                schedulerState.scheduledResto(true);
+              },
             ),
           ],
         );
