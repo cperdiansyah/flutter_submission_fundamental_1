@@ -62,7 +62,7 @@ class NotificationHelper {
     var platformChannelSpecifics =
         NotificationDetails(android: androidPlatformChannelSpecifics, iOS: iOSPlatformChannelSpecifics);
 
-    var titleNotification = "<b>Resto Yang Lagi Hype</b>";
+    var titleNotification = "<b>Ada diskon loh disini, mari cek!</b>";
     var dataResto = restos.restaurants;
     var randomNumber = _random.nextInt(dataResto!.length);
     var nameResto = dataResto[randomNumber].name;

@@ -20,7 +20,6 @@ class RestaurantSearchScreen extends StatelessWidget {
       body: Column(
         children: <Widget>[
           Container(
-            // color: Colors.white60.withOpacity(0.85),
             child: Padding(
               padding: EdgeInsets.fromLTRB(16, 8, 16, 12),
               child: Column(

@@ -5,6 +5,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/data/database_local/database_local.dart';
 import 'package:flutter_application_1/provider/provider.dart';
+import 'package:flutter_application_1/provider/provider_scheduling_resto.dart';
 import 'package:flutter_application_1/routes/routes.dart';
 import 'package:flutter_application_1/services/api_service.dart';
 import 'package:flutter_application_1/ui/helper/background_service.dart';
@@ -46,6 +47,9 @@ class MyApp extends StatelessWidget {
           create: (_) => RestaurantSearchProvider(
             apiService: ApiService(),
           ),
+        ),
+        ChangeNotifierProvider<SchedulingProvider>(
+          create: (_) => SchedulingProvider(),
         ),
         ChangeNotifierProvider(
           create: (_) => PreferencesProvider(

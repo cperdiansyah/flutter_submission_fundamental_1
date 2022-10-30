@@ -54,26 +54,26 @@ class SettingScreen extends StatelessWidget {
                 ),
               ),
             ),
-            // Material(
-            //   child: ListTile(
-            //     title: const Text('Scheduling Resto'),
-            //     trailing: Consumer<SchedulingProvider>(
-            //       builder: (context, scheduled, _) {
-            //         return Switch.adaptive(
-            //           value: provider.isDailyRestoActive,
-            //           onChanged: (value) async {
-            //             if (Platform.isIOS) {
-            //               customDialog(context);
-            //             } else {
-            //               scheduled.scheduledResto(value);
-            //               provider.enableDailyResto(value);
-            //             }
-            //           },
-            //         );
-            //       },
-            //     ),
-            //   ),
-            // ),
+            Material(
+              child: ListTile(
+                title: const Text('Scheduling Resto'),
+                trailing: Consumer<SchedulingProvider>(
+                  builder: (context, scheduled, _) {
+                    return Switch.adaptive(
+                      value: provider.isDailyRestoActive,
+                      onChanged: (value) async {
+                        if (Platform.isIOS) {
+                          customDialog(context);
+                        } else {
+                          scheduled.scheduledResto(value);
+                          provider.enableDailyResto(value);
+                        }
+                      },
+                    );
+                  },
+                ),
+              ),
+            ),
           ],
         );
       },
