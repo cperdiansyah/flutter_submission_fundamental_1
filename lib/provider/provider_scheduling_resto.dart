@@ -17,7 +17,7 @@ class SchedulingProvider extends ChangeNotifier {
       return await AndroidAlarmManager.periodic(
         const Duration(hours: 24),
         1,
-        BackgroundService().callback,
+        BackgroundService.callback,
         startAt: DateTimeHelper.format(),
         exact: true,
         wakeup: true,
