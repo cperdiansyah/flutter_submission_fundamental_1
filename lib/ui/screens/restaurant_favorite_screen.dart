@@ -1,7 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_application_1/common/colors.dart';
 import 'package:flutter_application_1/provider/provider.dart';
 import 'package:flutter_application_1/ui/widgets/card_restaurant.dart';

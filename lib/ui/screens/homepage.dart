@@ -9,8 +9,26 @@ class Homepage extends StatefulWidget {
 
 class _HomepageState extends State<Homepage> {
   int currentIndex = 0;
+  final NotificationHelper _notificationHelper = NotificationHelper();
 
-  final List<Widget> _children = [const RestaurantListScreen(), const FavoriteScreen(), const SettingScreen()];
+  @override
+  void initState() {
+    super.initState();
+    _notificationHelper.configureSelectNotificationSubject(restaurantDetailRoute);
+  }
+
+  @override
+  void dispose() {
+    selectNotificationSubject.close();
+    super.dispose();
+  }
+
+  final List<Widget> _children = [
+    const RestaurantListScreen(),
+    const FavoriteScreen(),
+    const SettingScreen()
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

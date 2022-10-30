@@ -84,7 +84,6 @@ class NotificationHelper {
     selectNotificationSubject.stream.listen(
       (String payload) async {
         var data = Restaurant.fromJson(json.decode(payload));
-        print(data.id);
         Get.to(() => RestaurantDetailScreen(), arguments: data.id);
       },
     );

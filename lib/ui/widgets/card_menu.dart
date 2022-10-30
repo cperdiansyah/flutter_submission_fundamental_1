@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/common/colors.dart';
-import 'package:flutter_application_1/data/models/menu.dart';
 
 class CardMenu extends StatelessWidget {
   final String menu;
