@@ -2,8 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_1/common/colors.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-const Color darkPrimaryColor = Color(0xFF000000);
-const Color darkSecondaryColor = Color.fromARGB(255, 179, 32, 6);
+// const Color darkPrimaryColor = Color(0xFF000000);
+// const Color darkSecondaryColor = Color.fromARGB(255, 179, 32, 6);
+const Color darkSecondaryColor = greyColor1;
+const Color darkPrimaryColor = greyColor3;
+const Color darkNavigationColor = Colors.black38;
 
 final TextTheme myTextTheme = TextTheme(
   headline1: GoogleFonts.quicksand(fontSize: 92, fontWeight: FontWeight.w300, letterSpacing: -1.5),

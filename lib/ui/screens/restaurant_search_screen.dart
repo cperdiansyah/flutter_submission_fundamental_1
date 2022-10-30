@@ -7,8 +7,9 @@ class RestaurantSearchScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final searchRestaurantsState =
-        Provider.of<RestaurantSearchProvider>(context);
+    final searchRestaurantsState = Provider.of<RestaurantSearchProvider>(context);
+    final preferencesState = Provider.of<PreferencesProvider>(context);
+
     return Scaffold(
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
@@ -19,7 +20,7 @@ class RestaurantSearchScreen extends StatelessWidget {
       body: Column(
         children: <Widget>[
           Container(
-            color: Colors.white60.withOpacity(0.85),
+            // color: Colors.white60.withOpacity(0.85),
             child: Padding(
               padding: EdgeInsets.fromLTRB(16, 8, 16, 12),
               child: Column(
@@ -31,7 +32,8 @@ class RestaurantSearchScreen extends StatelessWidget {
                       controller: _textEditingController,
                       focusNode: _focusNode,
                       decoration: InputDecoration(
-                        prefixIcon: Icon(Icons.search),
+                        prefixIcon:
+                            Icon(Icons.search, color: preferencesState.isDarkTheme ? Colors.black : mcdSecondary),
                         fillColor: Color(0xFFF6F7FB),
                         hintText: "Looking for a place to eat ?",
                         filled: true,
@@ -57,12 +59,10 @@ class RestaurantSearchScreen extends StatelessWidget {
             child: Padding(
               padding: EdgeInsets.fromLTRB(12, 12, 12, 0),
               child: Container(
-                child: Consumer<RestaurantSearchProvider>(
-                    builder: (context, state, _) {
+                child: Consumer<RestaurantSearchProvider>(builder: (context, state, _) {
                   if (state.state == ResultState.loading) {
                     return Center(child: CircularProgressIndicator());
                   } else if (state.state == ResultState.hasData) {
-                    
                     return ListView.builder(
                         shrinkWrap: true,
                         itemCount: state.result.restaurants!.length,
@@ -71,7 +71,6 @@ class RestaurantSearchScreen extends StatelessWidget {
                           return CardRestaurant(restaurant: restaurant);
                         });
                   } else if (state.state == ResultState.noData) {
-                    
                     return Column(
                       children: [
                         Container(
@@ -98,7 +97,7 @@ class RestaurantSearchScreen extends StatelessWidget {
                             fontFamily: GoogleFonts.montserrat().fontFamily,
                             fontSize: 16,
                             fontWeight: FontWeight.w600,
-                            color: Colors.black,
+                            // color: Colors.black,
                           ),
                         )
                       ],

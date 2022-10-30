@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/common/colors.dart';
 import 'package:flutter_application_1/provider/provider.dart';
 import 'package:flutter_application_1/provider/provider_scheduling_resto.dart';
 import 'package:flutter_application_1/ui/widgets/custom_dialog.dart';
@@ -16,7 +17,10 @@ class SettingScreen extends StatelessWidget {
   Widget _buildAndroid(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text(settingsTitle),
+        title: const Text(
+          settingsTitle,
+          style: navigationTextStyle,
+        ),
       ),
       body: _buildList(context),
     );
@@ -25,7 +29,10 @@ class SettingScreen extends StatelessWidget {
   Widget _buildIos(BuildContext context) {
     return CupertinoPageScaffold(
       navigationBar: const CupertinoNavigationBar(
-        middle: Text(settingsTitle),
+        middle: Text(
+          settingsTitle,
+          style: navigationTextStyle,
+        ),
       ),
       child: _buildList(context),
     );
@@ -47,26 +54,26 @@ class SettingScreen extends StatelessWidget {
                 ),
               ),
             ),
-            Material(
-              child: ListTile(
-                title: const Text('Scheduling Resto'),
-                trailing: Consumer<SchedulingProvider>(
-                  builder: (context, scheduled, _) {
-                    return Switch.adaptive(
-                      value: provider.isDailyRestoActive,
-                      onChanged: (value) async {
-                        if (Platform.isIOS) {
-                          customDialog(context);
-                        } else {
-                          scheduled.scheduledResto(value);
-                          provider.enableDailyResto(value);
-                        }
-                      },
-                    );
-                  },
-                ),
-              ),
-            ),
+            // Material(
+            //   child: ListTile(
+            //     title: const Text('Scheduling Resto'),
+            //     trailing: Consumer<SchedulingProvider>(
+            //       builder: (context, scheduled, _) {
+            //         return Switch.adaptive(
+            //           value: provider.isDailyRestoActive,
+            //           onChanged: (value) async {
+            //             if (Platform.isIOS) {
+            //               customDialog(context);
+            //             } else {
+            //               scheduled.scheduledResto(value);
+            //               provider.enableDailyResto(value);
+            //             }
+            //           },
+            //         );
+            //       },
+            //     ),
+            //   ),
+            // ),
           ],
         );
       },

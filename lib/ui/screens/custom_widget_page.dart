@@ -13,64 +13,48 @@ class CustomWidgetPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Stack(
-        children: [
-          Container(color: Colors.white),
-          SafeArea(
-            child: Container(
-              color: backColor ?? Colors.white,
-            ),
-          ),
-          SafeArea(
-            child: Column(
-              children: [
-                Container(
-                  width: double.infinity,
-                  padding: EdgeInsets.symmetric(horizontal: 24),
-                  color: mcdSecondary,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Flexible(
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Text(
-                              title,
-                              style:
-                                  GoogleFonts.poppins(fontSize: 21, fontWeight: FontWeight.w500, color: Colors.white),
-                            ),
-                            Text(
-                              subtitle,
-                              style: GoogleFonts.poppins(
-                                color: greyColor3,
-                                fontWeight: FontWeight.w300,
-                                fontSize: 13,
-                              ),
-                              softWrap: true,
-                              maxLines: 2,
-                            ),
-                            SizedBox(
-                              height: 12,
-                            )
-                          ],
-                        ),
-                      ),
-                      IconButton(
-                        icon: Icon(Icons.search, color: Colors.white),
-                        onPressed: () => Get.to(() => RestaurantSearchScreen()),
-                      )
-                    ],
-                  ),
+      appBar: PreferredSize(
+        preferredSize: Size.fromHeight(70.0),
+        child: AppBar(
+          automaticallyImplyLeading: false,
+          title: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(
+                title,
+                style: GoogleFonts.poppins(fontSize: 21, fontWeight: FontWeight.w500, color: Colors.white),
+              ),
+              Text(
+                subtitle,
+                style: GoogleFonts.poppins(
+                  color: greyColor3,
+                  fontWeight: FontWeight.w300,
+                  fontSize: 13,
                 ),
-                Expanded(
-                  child: child ?? SizedBox(),
-                )
-              ],
-            ),
+                softWrap: true,
+                maxLines: 2,
+              ),
+            ],
           ),
-        ],
+          actions: <Widget>[
+            Center(
+              child: IconButton(
+                icon: Icon(Icons.search, color: Colors.white),
+                onPressed: () => Get.to(() => RestaurantSearchScreen()),
+              ),
+            )
+          ],
+        ),
+      ),
+      body: SafeArea(
+        child: Column(
+          children: [
+            Expanded(
+              child: child ?? const SizedBox(),
+            )
+          ],
+        ),
       ),
     );
   }

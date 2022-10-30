@@ -18,6 +18,7 @@ class RestaurantDetailScreen extends StatelessWidget {
               );
             } else if (state.state == ResultState.hasData) {
               var restaurant = state.result.restaurant!;
+              final preferencesState = Provider.of<PreferencesProvider>(context);
 
               return CustomScrollView(
                 slivers: <Widget>[
@@ -150,7 +151,7 @@ class RestaurantDetailScreen extends StatelessWidget {
                           fontFamily: GoogleFonts.montserrat().fontFamily,
                           fontSize: 20,
                           fontWeight: FontWeight.w700,
-                          color: Colors.black,
+                          color: preferencesState.isDarkTheme ? Colors.white : Colors.black,
                         ),
                       ),
                     ),
@@ -186,7 +187,7 @@ class RestaurantDetailScreen extends StatelessWidget {
                               fontFamily: GoogleFonts.montserrat().fontFamily,
                               fontSize: 20,
                               fontWeight: FontWeight.w700,
-                              color: Colors.black,
+                              color: preferencesState.isDarkTheme ? Colors.white : Colors.black,
                             ),
                           ),
                         ],
@@ -228,7 +229,7 @@ class RestaurantDetailScreen extends StatelessWidget {
                               fontFamily: GoogleFonts.montserrat().fontFamily,
                               fontSize: 20,
                               fontWeight: FontWeight.w700,
-                              color: Colors.black,
+                              color: preferencesState.isDarkTheme ? Colors.white : Colors.black,
                             ),
                           ),
                           Padding(

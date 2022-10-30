@@ -17,23 +17,23 @@ class _HomepageState extends State<Homepage> {
       body: _children[currentIndex],
       bottomNavigationBar: BottomNavigationBar(
         onTap: onTabTapped,
-        backgroundColor: Colors.white,
+        // backgroundColor: Colors.white,
         currentIndex: currentIndex,
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
             label: 'Home',
-            backgroundColor: mcdSecondary,
+            // backgroundColor: mcdSecondary,
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.favorite),
             label: 'Favorite',
-            backgroundColor: mcdSecondary,
+            // backgroundColor: mcdSecondary,
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.settings),
             label: 'Settings',
-            backgroundColor: mcdSecondary,
+            // backgroundColor: mcdSecondary,
           ),
         ],
       ),
