@@ -15,6 +15,8 @@ const Color greyColor1 = Color(0xFFB4B4B4);
 const Color greyColor2 = Color(0xFFD8D8D8);
 const Color greyColor3 = Color(0xFFF7F7F7);
 const Color greyColor4 = Color(0xFF8D92A3);
+const Color darkModeBadge = Color(0xFF595959);
+const Color darkModeBackground = Color(0xFF252525);
 
 const Color navigationColor = Color(0xFFfAFAFC);
 

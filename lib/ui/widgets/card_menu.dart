@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/common/colors.dart';
+import 'package:flutter_application_1/provider/provider.dart';
+import 'package:provider/provider.dart';
 
 class CardMenu extends StatelessWidget {
   final String menu;
@@ -7,9 +10,11 @@ class CardMenu extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final preferencesState = Provider.of<PreferencesProvider>(context);
+
     return Card(
-      color: Colors.amber[400],
-      shadowColor : Colors.transparent,
+      color: preferencesState.isDarkTheme ? darkModeBadge : Colors.amber[400],
+      shadowColor: Colors.transparent,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(15.0),
       ),

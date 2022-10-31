@@ -23,7 +23,7 @@ class TextFieldArea extends StatelessWidget {
         SizedBox(width: 8),
         TextField(
           decoration: InputDecoration(
-            fillColor: Color(0xFFF6F7FB),
+            // fillColor: Color(0xFFF6F7FB),
             filled: true,
             border: OutlineInputBorder(
               borderRadius: BorderRadius.circular(15),
@@ -32,14 +32,13 @@ class TextFieldArea extends StatelessWidget {
                 style: BorderStyle.none,
               ),
             ),
-            contentPadding:
-                const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+            contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
             hintText: hintText,
             hintStyle: TextStyle(
               fontFamily: GoogleFonts.montserrat().fontFamily,
               fontSize: 12,
               fontWeight: FontWeight.w400,
-              color: Color(0xFFA4A4A4),
+              // color: Color(0xFFA4A4A4),
             ),
           ),
           maxLines: null,

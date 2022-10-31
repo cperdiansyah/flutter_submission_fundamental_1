@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/common/colors.dart';
 import 'package:flutter_application_1/provider/provider.dart';
 import 'package:flutter_application_1/services/api_service.dart';
 import 'package:flutter_application_1/ui/widgets/bottom_sheet_holder.dart';
@@ -19,16 +20,18 @@ class AddReview extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider<RestaurantAddReviewProvider>(
-      create: (_) => RestaurantAddReviewProvider(apiService: ApiService(Client()), restaurantId: restaurantId),
+      create: (_) =>
+          RestaurantAddReviewProvider(apiService: ApiService(Client()), restaurantId: restaurantId),
       child: Consumer<RestaurantAddReviewProvider>(
         builder: (context, state, _) {
           final providerAddReview = Provider.of<RestaurantAddReviewProvider>(context);
+          final preferencesState = Provider.of<PreferencesProvider>(context);
 
           return Padding(
             padding: MediaQuery.of(context).viewInsets,
             child: Container(
               padding: const EdgeInsets.all(20),
-              color: Colors.white,
+              color: preferencesState.isDarkTheme ? darkModeBackground : Colors.white,
               child: SafeArea(
                 top: false,
                 child: Column(
@@ -45,7 +48,7 @@ class AddReview extends StatelessWidget {
                         fontFamily: GoogleFonts.montserrat().fontFamily,
                         fontSize: 16,
                         fontWeight: FontWeight.w600,
-                        color: Colors.black,
+                        color: preferencesState.isDarkTheme ? Colors.white : Colors.black,
                       ),
                       textAlign: TextAlign.start,
                     ),
@@ -54,6 +57,7 @@ class AddReview extends StatelessWidget {
                     ),
                     InputTextField(
                       hintText: 'Input your name here...',
+                      
                       // controller: providerAddReview.controller,
                       onChanged: ((value) {
                         providerAddReview.updateName(value!);
@@ -76,7 +80,9 @@ class AddReview extends StatelessWidget {
                       textValue: 'Submit Review',
                       isLoading: state.loading,
                       onPressed: () {
-                        if (state.restaurantId != null && state.name != null && state.reviews != null) {
+                        if (state.restaurantId != null &&
+                            state.name != null &&
+                            state.reviews != null) {
                           return providerAddReview
                               .postAddReview(restaurantId)
                               .whenComplete(() => Navigator.pop(context));

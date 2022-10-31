@@ -24,7 +24,7 @@ class InputTextField extends StatelessWidget {
         SizedBox(width: 8),
         TextField(
           decoration: InputDecoration(
-            fillColor: Color(0xFFF6F7FB),
+            // fillColor: Color(0xFFF6F7FB),
             filled: true,
             border: OutlineInputBorder(
               borderRadius: BorderRadius.circular(15),
@@ -40,7 +40,7 @@ class InputTextField extends StatelessWidget {
               fontFamily: GoogleFonts.montserrat().fontFamily,
               fontSize: 12,
               fontWeight: FontWeight.w400,
-              color: Color(0xFFA4A4A4),
+              // color: Color(0xFFA4A4A4),
             ),
           ),
           onChanged: onChanged,

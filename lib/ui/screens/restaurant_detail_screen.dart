@@ -8,7 +8,8 @@ class RestaurantDetailScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider<RestaurantDetailProvider>(
-      create: (_) => RestaurantDetailProvider(apiService: ApiService(Client()), restaurantId: restaurantId),
+      create: (_) =>
+          RestaurantDetailProvider(apiService: ApiService(Client()), restaurantId: restaurantId),
       child: Scaffold(
         body: Consumer<RestaurantDetailProvider>(
           builder: (context, state, _) {
@@ -48,7 +49,11 @@ class RestaurantDetailScreen extends StatelessWidget {
                               gradient: LinearGradient(
                                 begin: Alignment.topCenter,
                                 end: Alignment.bottomCenter,
-                                colors: <Color>[Colors.black.withAlpha(0), Colors.black12, Colors.black45],
+                                colors: <Color>[
+                                  Colors.black.withAlpha(0),
+                                  Colors.black12,
+                                  Colors.black45
+                                ],
                               ),
                             ),
                             child: Padding(
@@ -93,7 +98,8 @@ class RestaurantDetailScreen extends StatelessWidget {
                       ),
                       title: Text(
                         restaurant.name.toString(),
-                        style: TextStyle(fontWeight: FontWeight.w700, color: Colors.white, fontSize: 15.0),
+                        style: TextStyle(
+                            fontWeight: FontWeight.w700, color: Colors.white, fontSize: 15.0),
                       ),
                       centerTitle: true,
                       titlePadding: EdgeInsets.symmetric(horizontal: 16.0, vertical: 12.0),
@@ -134,8 +140,10 @@ class RestaurantDetailScreen extends StatelessWidget {
                             trimLines: 10,
                             trimCollapsedText: 'Show More',
                             trimExpandedText: 'Show less',
-                            moreStyle: const TextStyle(fontSize: 12, fontWeight: FontWeight.w400, color: mcdPrimary),
-                            lessStyle: const TextStyle(fontSize: 12, fontWeight: FontWeight.w400, color: mcdPrimary),
+                            moreStyle: const TextStyle(
+                                fontSize: 12, fontWeight: FontWeight.w400, color: mcdPrimary),
+                            lessStyle: const TextStyle(
+                                fontSize: 12, fontWeight: FontWeight.w400, color: mcdPrimary),
                           ),
                           SizedBox(height: 32),
                         ],
@@ -244,8 +252,9 @@ class RestaurantDetailScreen extends StatelessWidget {
                                   builder: (context) => AddReview(
                                     restaurantId: restaurant.id.toString(),
                                   ),
-                                ).then((value) => Provider.of<RestaurantDetailProvider>(context, listen: false)
-                                    .fetchDetailRestaurant(restaurantId));
+                                ).then((value) =>
+                                    Provider.of<RestaurantDetailProvider>(context, listen: false)
+                                        .fetchDetailRestaurant(restaurantId));
                               },
                               child: const Icon(
                                 Icons.add_rounded,
