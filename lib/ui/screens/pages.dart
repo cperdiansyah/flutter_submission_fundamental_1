@@ -13,6 +13,7 @@ import 'package:flutter_application_1/ui/widgets/card_restaurant.dart';
 import 'package:flutter_application_1/ui/widgets/card_review.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:http/http.dart';
 import 'package:lottie/lottie.dart';
 import 'package:provider/provider.dart';
 import 'package:readmore/readmore.dart';

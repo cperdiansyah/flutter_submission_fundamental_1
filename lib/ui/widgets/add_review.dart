@@ -6,6 +6,7 @@ import 'package:flutter_application_1/ui/widgets/input_text_field.dart';
 import 'package:flutter_application_1/ui/widgets/primary_button.dart';
 import 'package:flutter_application_1/ui/widgets/text_field_area.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:http/http.dart';
 import 'package:provider/provider.dart';
 
 class AddReview extends StatelessWidget {
@@ -18,7 +19,7 @@ class AddReview extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider<RestaurantAddReviewProvider>(
-      create: (_) => RestaurantAddReviewProvider(apiService: ApiService(), restaurantId: restaurantId),
+      create: (_) => RestaurantAddReviewProvider(apiService: ApiService(Client()), restaurantId: restaurantId),
       child: Consumer<RestaurantAddReviewProvider>(
         builder: (context, state, _) {
           final providerAddReview = Provider.of<RestaurantAddReviewProvider>(context);

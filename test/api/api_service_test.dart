@@ -15,16 +15,19 @@ void main() {
     test('Return List Resto', () async {
       final client = MockClient();
       when(client.get(Uri.parse('https://restaurant-api.dicoding.dev/list'))).thenAnswer(
-          (_) async => http.Response('{"error":false,"message":"success","count":20,"restaurants":[]}', 200));
+          (_) async => http.Response(
+              '{"error":false,"message":"success","count":20,"restaurants":[]}', 200));
 
-      expect(await ApiService().getListRestaurants(), isA<RestaurantListResponse>());
+      expect(await ApiService(client).getListRestaurants(), isA<RestaurantListResponse>());
     });
     test('Return Detail Resto', () async {
       final client = MockClient();
       when(client.get(Uri.parse('https://restaurant-api.dicoding.dev/detail/rqdv5juczeskfw1e867')))
-          .thenAnswer((_) async => http.Response('{"error":false,"message":"success","restaurant":{}}', 200));
+          .thenAnswer((_) async =>
+              http.Response('{"error":false,"message":"success","restaurant":{}}', 200));
 
-      expect(await ApiService().getDetailRestaurant("rqdv5juczeskfw1e867"), isA<RestaurantDetailResponse>());
+      expect(await ApiService(client).getDetailRestaurant("rqdv5juczeskfw1e867"),
+          isA<RestaurantDetailResponse>());
     });
   });
 }

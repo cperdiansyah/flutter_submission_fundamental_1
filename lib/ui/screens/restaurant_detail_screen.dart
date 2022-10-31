@@ -8,7 +8,7 @@ class RestaurantDetailScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider<RestaurantDetailProvider>(
-      create: (_) => RestaurantDetailProvider(apiService: ApiService(), restaurantId: restaurantId),
+      create: (_) => RestaurantDetailProvider(apiService: ApiService(Client()), restaurantId: restaurantId),
       child: Scaffold(
         body: Consumer<RestaurantDetailProvider>(
           builder: (context, state, _) {

@@ -14,6 +14,7 @@ import 'package:flutter_application_1/ui/helper/preferences_helper.dart';
 import 'package:flutter_application_1/ui/screens/pages.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:get/get.dart';
+import 'package:http/http.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -40,12 +41,12 @@ class MyApp extends StatelessWidget {
       providers: [
         ChangeNotifierProvider<RestaurantListProvider>(
           create: (_) => RestaurantListProvider(
-            apiService: ApiService(),
+            apiService: ApiService(Client()),
           ),
         ),
         ChangeNotifierProvider<RestaurantSearchProvider>(
           create: (_) => RestaurantSearchProvider(
-            apiService: ApiService(),
+            apiService: ApiService(Client()),
           ),
         ),
         ChangeNotifierProvider<SchedulingProvider>(
