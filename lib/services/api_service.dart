@@ -18,7 +18,7 @@ class ApiService {
 
   Future<RestaurantListResponse> getListRestaurants() async {
     try {
-      final response = await http.get(Uri.parse("${_baseUrl}${Endpoints.restaurantList}"));
+      final response = await client.get(Uri.parse("${_baseUrl}${Endpoints.restaurantList}"));
       if (response.statusCode == 200) {
         return RestaurantListResponse.fromJson(jsonDecode(response.body));
       } else {
@@ -32,7 +32,7 @@ class ApiService {
 
   Future<RestaurantDetailResponse> getDetailRestaurant(String id) async {
     try {
-      final response = await http.get(Uri.parse("${_baseUrl}${Endpoints.restaurantDetail}${id}"));
+      final response = await client.get(Uri.parse("${_baseUrl}${Endpoints.restaurantDetail}${id}"));
       if (response.statusCode == 200) {
         return RestaurantDetailResponse.fromJson(jsonDecode(response.body));
       } else {
@@ -46,7 +46,7 @@ class ApiService {
 
   Future<RestaurantSearchResponse> searchRestaurant(String query) async {
     final response =
-        await http.get(Uri.parse("${_baseUrl}${Endpoints.restaurantSearch}?q=${query}"));
+        await client.get(Uri.parse("${_baseUrl}${Endpoints.restaurantSearch}?q=${query}"));
     if (response.statusCode == 200) {
       return RestaurantSearchResponse.fromJson(json.decode(response.body));
     } else {
@@ -55,7 +55,7 @@ class ApiService {
   }
 
   Future<RestaurantAddReviewResponse> postReviews(String id, String name, String review) async {
-    final response = await http.post(
+    final response = await client.post(
       Uri.parse("${_baseUrl}${Endpoints.review}"),
       headers: {
         'Content-Type': 'application/json; charset=UTF-8',
